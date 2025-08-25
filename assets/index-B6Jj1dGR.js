@@ -100,7 +100,6 @@ Please change the parent <Route path="${V}"> to <Route path="${V==="/"?"*":`${V}
                 xl:max-w-[1000px]\r
                 xl:overflow-x-auto\r
                 lg:gap-4\r
-                border\r
                             `,children:[o.jsxs("div",{className:`search-car__container-logo --- absolute *:absolute md:min-w-[1080px] *:p-4 *:px-6 *:z-20 md:flex h-2 left-8 top-19 text-2xl *:bg-gray-100/30 *:text-black ${((h=document.getElementsByClassName("search-car__card")[0])==null?void 0:h.clientWidth)>=900?"*:flex":"*:hidden"}  `,children:[o.jsx("button",{className:"search-car__btn-pre --btn --- p-2 px-4 rounded-full left-0 ",type:"button",onClick:()=>{f(-1)},children:"<"}),o.jsx("button",{className:"search-car__btn-next --btn --- p-2 px-4 rounded-full right-0 ",type:"button",onClick:()=>{f(1)},children:">"})]}),c.data.map(({brandName:v,brandImg:b},p)=>o.jsxs(xl,{to:`/?brand=${v}`,className:` search-car__brand-card --btn ${u===v&&"active"} ... 
                             
                             group
