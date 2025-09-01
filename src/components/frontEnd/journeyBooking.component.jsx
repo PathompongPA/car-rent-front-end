@@ -21,10 +21,10 @@ export default function JourneyBooking() {
                             lg:h-[30vh] xl:h-0
                             | w-full  gap-4 | bg-white/70 xl:bg-white | rounded-lg 
                             group-hover:xl:visible group-hover:xl:h-[1000px]  group-hover:xl:p-4 
-                            duration-100 xl:duration-300 flex flex-col justify-start  items-start 
+                            duration-100 xl:duration-800 flex flex-col justify-start  items-start 
                             | xl:items-start xl:justify-start | xl:p-0 xl:max-w-full  lg:invalid:`} index={index}>
                             {detail.map((param, _index) =>
-                                <div className={`journey-booking__card-detail >> flex justify-start items-start | h-fit | font-light text-blue-1 text-[16px] `} key={`journey-booking-card-detail-${_index}`} index={_index}>{`- ${param}`}</div>
+                                <div className={`journey-booking__card-detail >> flex justify-start items-start | h-fit | font-light text-blue-1 text-[16px] `} key={`journey-booking-card-detail-${_index}`} index={_index}>{`${_index + 1}. ${param}`}</div>
                             )}
                         </div>
                     </button>

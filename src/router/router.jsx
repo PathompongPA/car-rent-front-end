@@ -6,19 +6,23 @@ import { fetchApi } from "../utility";
 import { CarPage, CustomerPage, ErrorPage, HistoryBookingPage, OutOfPage } from "../pages/admin";
 
 async function adminLoader() {
-    const [brandRes, carRes, customer, booking, content] = await Promise.all([
-        fetchApi("GET", "/api/car/brand"),
+    const [allBrand, brandRes, carRes, customer, booking, content, reviews] = await Promise.all([
+        fetchApi("GET", "/api/car/brand/all"),
+        fetchApi("GET", "/api/car/brand/all"),
         fetchApi("GET", "/api/car"),
         fetchApi("GET", "/api/customer/"),
         fetchApi("GET", "/api/booking"),
         fetchApi("GET", "/api/content"),
+        fetchApi("GET", "/api/reviews"),
     ])
+    const AllBrand = await allBrand
     const Brand = await brandRes
     const Car = await carRes
     const Customer = await customer
     const Booking = await booking
     const Content = await content
-    return { Brand, Car, Customer, Booking, Content }
+    const Reviews = await reviews
+    return { Brand, Car, Customer, Booking, Content, Reviews, AllBrand }
 }
 
 const router = createHashRouter([
@@ -84,7 +88,7 @@ const router = createHashRouter([
         path: "/car",
         loader: adminLoader,
         element:
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center w-full ">
                 <NavigationBar />
                 <GalleryCar />
                 <Calendar />

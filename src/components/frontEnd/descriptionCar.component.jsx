@@ -8,9 +8,9 @@ export default function DescriptionCar() {
     let car = Car.data.filter((item) => item.id === searchCarId)[0]
     // .find((element) => element.id === searchCarId)
     return (
-        <div className="description-car *** flex flex-col gap-4 font-black text-blue-1 w-full p-4 pb-8 md:max-w-7xl  lg:snap-center">
-            <h1 className=" md:text-title-1 text-title-3">รายละเอียด</h1>
-            <div className="px-4 md:px-8">{car.carDescription}</div>
+        <div className="description-car *** flex flex-col w-full p-4 *:text-blue-1 gap-2 md:max-w-7xl ">
+            <h1 className="text-lg text-blue-1  font-black  md:text-description-1 ">รายละเอียด</h1>
+            <p className="w-full break-words ">{car.carDescription}</p>
         </div>
     )
 };

@@ -1,5 +1,33 @@
 @import "tailwindcss";
 
+/* กำหนดกับทุก scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  /* ความกว้าง */
+  height: 8px;
+  /* ความสูง (เวลาเป็นแนวนอน) */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #b3b3b3;
+  /* ฟ้า (Tailwind blue-500) */
+  border-radius: 9999px;
+  /* โค้ง */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+  /* เทา (Tailwind gray-200) */
+}
+
+/* สำหรับ Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #b3b3b3#ffffff;
+  /* thumb track */
+}
+
+
 @font-face {
   font-family: ibm;
   src: url(./assets/font/IBM_Plex_Sans_Thai/IBMPlexSansThai-Medium.ttf);
@@ -26,8 +54,11 @@
 
 @layer base {
   * {
-    @apply box-border font-ibm scroll-smooth
-    /* lg:snap-y lg:snap-mandatory */
+    @apply box-border font-ibm scroll-smooth touch-manipulation
+  }
+
+  html {
+    scrollbar-gutter: stable;
   }
 
   details:hover {
@@ -49,11 +80,11 @@
   }
 
   .--btn {
-    @apply active:text-golden-1 hover:text-golden-1 hover:cursor-pointer hover:md:scale-[1.1] active:scale-[.9] active:md:scale-[.99] transition-all duration-150 select-none
+    @apply active:text-golden-1 hover:text-golden-1 hover:cursor-pointer hover:md:scale-[1.1] active:scale-[.9] active:md:scale-[.99] transition-all duration-500 select-none
   }
 
   .active {
-    @apply bg-radial to-black/10 from-0% duration-75 md:duration-300
+    @apply bg-radial to-black/10 from-0% duration-75 md:duration-600
     /* bg-gradient-to-tr from-blue-2 to-blue-1/80 */
     /* bg-gradient-to-tr from-blue-2 to-blue-1/80 text-white */
   }
@@ -65,5 +96,10 @@
   .--scroll-hide {
     scrollbar-width: none;
   }
+
+  .--dragging {
+    @apply brightness-50
+  }
+
 
 }

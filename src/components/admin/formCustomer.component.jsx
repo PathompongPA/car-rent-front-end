@@ -18,7 +18,6 @@ export default function FormCustomer
             }
         }
     ) {
-
     let { id, customerName, customerLastName, customerDriverLicense, customerIdCard, customerPhone, customerFacebook } = data;
     const [IsCard, setIsCard] = useState(isCard)
     const [driverLicense, setDriverLicense] = useState(customerDriverLicense)
@@ -107,13 +106,13 @@ export default function FormCustomer
         }
     }
 
-    async function deleteBtn() {
-        let form = getForm()
-        let body = JSON.stringify({ id: form.get("id") })
-        let { isSuccess, msg } = await fetchApi("DELETE", "/api/customer/", body)
-        isSuccess && rePage()
-        alert(!msg && "ลบสำเร็จ")
-    }
+    // async function deleteBtn() {
+    //     let form = getForm()
+    //     let body = JSON.stringify({ id: form.get("id") })
+    //     let { isSuccess, msg } = await fetchApi("DELETE", "/api/customer/", body)
+    //     isSuccess && rePage()
+    //     alert(!msg && "ลบสำเร็จ")
+    // }
 
     function editBtn() {
         rePage()
@@ -121,15 +120,15 @@ export default function FormCustomer
     }
 
     return (
-        <form className={`form-customer-${index} *** *:bg-gray-900 *:md:p-2 *:rounded-lg rounded-lg bg-gray-900 p-4 border border-gray-800`}>
-            <fieldset className={` grid grid-cols-3 gap-2 *:not-first:bg-gray-900  *:p-2 *:rounded-lg md:gap-2 ${isCard ? "" : ""} *:md:col-span-1`}>
+        <form className={`form-customer-${index} *** *:bg-gray-900 *:md:p-2 *:rounded-lg rounded-lg bg-gray-900 p-4 border border-gray-800  w-full  `}>
+            <fieldset className={` grid grid-cols-3 gap-2 *:not-first:bg-gray-900  *:p-2 *:rounded-lg md:gap-2 ${isCard ? "" : ""} *:not-[input]:md:col-span-3 md:w-full `}>
                 {/* <legend>ข้อมูลลูกค้า </legend> */}
 
                 <input className={`form-customer__id-${index}`} type="hidden" name="id" defaultValue={id} />
                 <input className={`form-customer__name-${index}`} type="text" name="customerName" placeholder="ชื่อ" defaultValue={customerName} readOnly={IsCard} />
                 <input className={`form-customer__last-name-${index}`} type="text" name="customerLastName" placeholder="นามสกุล" defaultValue={customerLastName} readOnly={IsCard} />
                 <input className={`form-customer__phone-${index} *** `} type="text" name="customerPhone" placeholder="เบอร์ติดต่อ" defaultValue={customerPhone} readOnly={IsCard} />
-                <details className=" col-span-3 " open={!IsCard}>
+                <details className=" col-span-3 *:w-full " open={!IsCard}>
                     <summary>เอกสาร</summary>
 
                     <details className="col-span-3" open={!IsCard}>
@@ -137,7 +136,7 @@ export default function FormCustomer
                         <div className="relative aspect-video h-full w-full *:aspect-video">
                             <label className={`form-customer__lable-id-card-${index} *** cursor-pointer absolute w-full h-full flex justify-center items-center bg-gray-800/70 rounded-lg `} htmlFor={`customerIdCard-${index}`} hidden={IsCard}>เลือกรูปใบขับขี่</label>
                             <img className={`form-customer__img-id-card-${index} *** w-full bg-gray-800 rounded-lg object-cover `} src={IdCard} alt="" />
-                            <input className={`form-customer__input-id-card-${index}`} type="file" name="customerIdCard" id={`customerIdCard-${index}`} hidden onChange={changeIdCard} />
+                            <input className={`form-customer__input-id-card-${index}`} type="file" accept="image/*" name="customerIdCard" id={`customerIdCard-${index}`} hidden onChange={changeIdCard} />
                         </div>
                     </details>
 
@@ -146,7 +145,7 @@ export default function FormCustomer
                         <div className="relative aspect-video h-full w-full *:aspect-video">
                             <label className={`form-customer__lable-driver-license-${index} *** cursor-pointer absolute w-full h-full flex justify-center items-center bg-gray-800/70 rounded-lg `} htmlFor={`customerDriverLicense-${index}`} hidden={IsCard}>เลือกรูปใบขับขี่</label>
                             <img className={`form-customer__img-dirver-license-${index} *** w-full bg-gray-800 rounded-lg object-cover`} src={driverLicense} alt="" />
-                            <input className={`form-customer__input-driver-license-${index}`} type="file" name="customerDriverLicense" id={`customerDriverLicense-${index}`} hidden onChange={changeDriverLicense} />
+                            <input className={`form-customer__input-driver-license-${index}`} type="file" accept="image/*" name="customerDriverLicense" id={`customerDriverLicense-${index}`} hidden onChange={changeDriverLicense} />
                         </div>
                     </details>
 
@@ -155,7 +154,7 @@ export default function FormCustomer
                         <div className="relative aspect-video h-full w-full *:aspect-video">
                             <label className={`form-customer__lable-facebook-${index} *** cursor-pointer absolute w-full h-full flex justify-center items-center bg-gray-800/70 rounded-lg `} htmlFor={`customerFacebook-${index}`} hidden={IsCard}>เลือกรูปใบขับขี่</label>
                             <img className={`form-customer__img-facebook-${index} *** w-full bg-gray-800 rounded-lg object-cover`} src={facebook} alt="" />
-                            <input className={`form-customer__input-facebookk-${index}`} type="file" name="customerFacebook" id={`customerFacebook-${index}`} hidden onChange={changeFacebook} />
+                            <input className={`form-customer__input-facebookk-${index}`} type="file" accept="image/*" name="customerFacebook" id={`customerFacebook-${index}`} hidden onChange={changeFacebook} />
                         </div>
                     </details>
                 </details>
@@ -165,7 +164,7 @@ export default function FormCustomer
             <fieldset>
                 <div className={`form-customer__container-btn-${index} *** flex gap-4 *:rounded-lg *:p-2 `}>
                     <button className={`form-customer__btn-save-${index} *** --btn flex-1/2 bg-lime-800 ${IsCard && "hidden"} `} type="button" onClick={submitBtn}>บันทึก</button>
-                    <button className={`form-customer__btn-delete-${index} *** --btn flex-1/2 bg-red-800 ${!IsCard && "hidden"} `} type="button" onClick={deleteBtn}>ลบ</button>
+                    {/* <button className={`form-customer__btn-delete-${index} *** --btn flex-1/2 bg-red-800 ${!IsCard && "hidden"} `} type="button" onClick={deleteBtn}>ลบ</button> */}
                     <button className={`form-customer__btn-cancel-${index} *** --btn flex-1/2 ${IsCard & index !== "" && "hidden"} ${!IsCard & index === "" && "hidden"} `} type="button" onClick={editBtn}>ยกเลิก</button>
                     <button className={`form-customer__btn-edit-${index} *** --btn flex-1/2 bg-blue-800 ${!IsCard && "hidden"}`} type="button" onClick={editBtn}>แก้ไข</button>
                 </div>

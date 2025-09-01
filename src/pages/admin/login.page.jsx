@@ -9,7 +9,9 @@ export default function LoginPage() {
         let isBodyRady = userName.length > 0 & password.length > 0
         if (isBodyRady) {
             const { data } = await fetchApi("POST", "/api/user/login", JSON.stringify(body))
-            data.isLogin ? location.reload(true) : alert(data.msg)
+            let isLogin = data.isLogin
+            isLogin ? location.reload(true) : alert(data)
+            isLogin && alert("เข้าสู่ระบบสำเร็จ")
         }
         else {
             alert("กรุณากรอกข้อมูลให้ครบถ้วน \n\tuser name \n\tpassword")

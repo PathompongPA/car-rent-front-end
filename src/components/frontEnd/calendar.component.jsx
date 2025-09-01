@@ -16,7 +16,8 @@ export default function Calendar() {
     const { Car } = useLoaderData();
     // const { bookedDates } = Car.data.find((element) => element.id === parameCarId)
 
-    const { bookedDates } = Car.data.filter((item) => item.id === parameCarId)[0]
+    const { bookedDates } = Car.data.filter((item) => item?.id === parameCarId)[0]
+    console.log(Car.data)
     // .find((element) => element.id === parameCarId)
 
     useEffect(() => {

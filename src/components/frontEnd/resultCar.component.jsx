@@ -6,7 +6,16 @@ export default function ResultCar() {
 
     let searchBrand = searchParam.get('brand')
     let isHomePage = searchBrand === "all" | searchBrand === null
-    let cars = isHomePage ? Car.data : Car.data.filter((element) => element.brand.brandName === searchBrand)
+    let cars = isHomePage ?
+        Car.data.filter((item) => {
+            let isCarNotHide = item.isDelete === false
+            return isCarNotHide
+        }) :
+        Car.data.filter((item) => {
+            let isBrandValid = item.brand.brandName === searchBrand
+            return isBrandValid
+        }
+        )
 
     return (
         <div className="result-car >> flex flex-col  gap-4 flex-wrap justify-center  | min-w-[150px]  lg:min-h-[300px] w-full lg:gap-4  p-4 | bg-linear-to-b from-white to-blue-2/10  | lg:max-w-7xl md:bg-white md:bg-none snap-start ">

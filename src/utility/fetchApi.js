@@ -1,9 +1,7 @@
 export default async function fetchApi(method, path, body, headers = { 'Accept': 'application/json', 'Content-Type': 'application/json', }) {
-    // alert(location.hostname)
     return (
         await fetch(
-            `http://${location.hostname}:9999${path}`,
-            // `http://kiatpaisan.trueddns.com:33345${path}`,
+            `${location.protocol}//${location.hostname}${path}`,
             {
                 method: method,
                 headers: headers,

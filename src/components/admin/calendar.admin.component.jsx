@@ -82,7 +82,7 @@ export default function CalendarAdmin({ bookings = [] }) {
                 <button onClick={handleNext} type="button" className=" cursor-pointer px-4 py-2 rounded-lg  text-white">{`>`}</button>
             </div>
 
-            <div className="flex gap-1 md:gap-4 md:mt-2 *:h-10">
+            <div className="flex gap-1 md:gap-4 md:mt-2 ">
                 <button onClick={handleToday} type="button" className=" hover:text-golden-1 cursor-pointer flex-1 py-1 border border-gray-800 text-white rounded">วันนี้</button>
                 <button onClick={() => setSelectedRange({ checkIn: null, checkOut: null })} type="button" className="hover:text-golden-1 cursor-pointer flex-1 md:py-3 border border-gray-800 text-white rounded">ล้างวันจอง</button>
             </div>

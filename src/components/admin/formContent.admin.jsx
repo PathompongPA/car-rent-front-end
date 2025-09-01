@@ -25,9 +25,9 @@ export default function FormContent() {
 
     // console.log("content : ", Content)
     return (
-        <form className="form-content *** flex flex-col gap-4 pb-20 w-full">
+        <form className="form-content *** flex flex-col gap-4 pb-20 w-full md:max-w-7xl">
 
-            <button className=" z-40 bg-gray-800 fixed md:bottom-4 md:right-[100px]  bottom-4 right-4 border border-gray-800 p-4 rounded-lg hover:bg-gray-800 cursor-pointer active:bg-gray-900" type="button" onClick={save}>บันทึก</button>
+            <button className=" z-40 bg-blue-700 fixed md:bottom-4 md:right-[100px]  bottom-4 right-4 border border-gray-800 p-4 rounded-lg hover:bg-gray-800 cursor-pointer active:bg-gray-900" type="button" onClick={save}>บันทึก</button>
 
             <div className=" text-title-3 font-bold bg-gray-900 ">
                 <h1 className=" p-4 rounded-lg ">แก้ไขหน้าเว็บ</h1>
@@ -44,7 +44,7 @@ export default function FormContent() {
                     <label className="hidden md:block" htmlFor="">logo </label>
                     <div className=" relative flex items-center  justify-center ">
                         <label className=" absolute cursor-pointer w-[200px] hover:bg-gray-900/90 h-full border top-0 flex items-center justify-center bg-gray-800/50 " htmlFor="logo">คลิกเพื่อเปลี่ยนโลโก้</label>
-                        <input type="file" name="logo" id="logo" hidden onChange={(e) => { document.getElementsByClassName("content-image-logo")[0].src = URL.createObjectURL(e.target.files[0]) }} />
+                        <input type="file" name="logo" id="logo" hidden onChange={(e) => { document.getElementsByClassName("content-image-logo")[0].src = URL.createObjectURL(e.target.files[0]) }} accept="image/*" />
                         <img className="content-image-logo w-[200px] aspect-16/9 object-cover bg-gray-800" src={Content[5]?.value.image} alt={Content[5]?.value.image} />
                     </div>
                     <h4 className="text-gray-500">* โลโก้ ควรมีอัตราส่วนภาพ 16:9</h4>
@@ -69,7 +69,7 @@ export default function FormContent() {
                             <div className=" absolute w-[200px] top-4 right-4 text-sm text-gray-500 ">* รูปควรมีขนาดมากกว่า 1280*720 และมีอัตราส่วน 16:9 </div>
                         </div>
                         <label className=" flex-1/5 border cursor-pointer border-gray-800 rounded-lg h-full flex justify-center items-center " htmlFor="view-board-image" >คลิกเพื่อเพิ่มรูป</label>
-                        <input type="file" name="viewBoard" id="view-board-image" hidden onChange={(e) => { setImage(e.target.files) }} multiple />
+                        <input type="file" name="viewBoard" id="view-board-image" hidden onChange={(e) => { setImage(e.target.files) }} multiple accept="image/*" />
                         <div className="flex md:flex-col border border-gray-800 h-full  overflow-auto p-4 gap-4 ">
                             {Array.from(image).map((item, indexImageViewBoard) => {
                                 return (<img className="object-cover  aspect-16/9" src={URL.createObjectURL(item)} key={item + indexImageViewBoard} />)

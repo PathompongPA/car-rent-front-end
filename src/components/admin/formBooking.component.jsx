@@ -41,7 +41,7 @@ export default function FormBooking() {
 
         const { isSuccess, msg } = await fetchApi("POST", "/api/booking", form, {})
         !isSuccess && alert(msg)
-        isSuccess && location.reload(true)
+        isSuccess && (() => { alert("บันทึกสำเร็จ"); location.reload(true) })()
     }
 
     function togglePopUp() {
@@ -101,7 +101,7 @@ export default function FormBooking() {
     }
 
     return (
-        <form className={`form-booking *** w-full  border-gray-800 rounded-lg p-4 pt-20`} onChange={formChange} onSubmit={submitForm}>
+        <form className={`form-booking *** w-full h-fit  rounded-lg border-white p-4 pt-20 max-w-7xl `} onChange={formChange} onSubmit={submitForm}>
             <h1 className="hidden md:flex md:pl-4 row-span-10 text-description-1 md:text-title-3 font-bold justify-center items-center p-2 " >ระบบ จองรถ</h1>
 
             <div className="status-bar md:row-span-5 hidden md:flex pl-4  justify-center items-center gap-[10vw] md:text-description-3 font-bold ">
@@ -133,15 +133,15 @@ export default function FormBooking() {
 
             <div className={`flex  flex-col w-full md:grid md:grid-cols-2  p-2 gap-1 md:gap-4 *:rounded-lg ${step !== 2 && "md:hidden hidden"} scrollbar-none  `}>
 
-                <div className="flex flex-col gap-2 md:overflow-hidden md:border md:border-gray-800 md:p-4 h-full  ">
+                <div className="flex flex-col gap-2 md:overflow-hidden md:p-4 h-full  ">
                     <div className="w-full  text-description-2"> รายชื่อลูกค้า</div>
                     <div className="flex flex-col  bg-gray-900 gap-1 md:gap-4 h-full ">
                         <div className="grid grid-cols-12 gap-1 md:gap-2 *:rounded-lg  *:md:p-2  bg-gray-900 rounded-lg">
                             <input className="col-span-9 border border-gray-800 " type="text" placeholder="ค้นหาลูกค้าด้วย ..." onChange={filterCustomer} />
                             <button className="col-span-3 border border-gray-800 " type="button">ค้นหา</button>
                         </div>
-                        <div className="flex flex-col h-[40vh] md:h-[55vh] md:overflow-hidden border-gray-800  gap-2 rounded-lg border overflow-x-scroll *:w-[120vw]  *:md:w-full ">
-                            <div className="grid grid-cols-7 *:not-first:col-span-2 *:text-center border border-gray-800 py-4 rounded-lg w-[150vw] ">
+                        <div className="flex flex-col h-[40vh] md:h-[55vh] md:overflow-hidden border-gray-800 p-2  gap-2 rounded-lg border overflow-x-scroll *:w-[120vw]  *:md:w-full ">
+                            <div className="grid grid-cols-7 *:not-first:col-span-2 *:text-center border-gray-800 rounded-lg w-[150vw] ">
                                 <span className=""></span>
                                 <span>ชื่อ</span>
                                 <span>นามสกุล</span>
@@ -164,7 +164,7 @@ export default function FormBooking() {
                     </div>
                 </div>
 
-                <div className=" flex flex-col p-4 mt-8 gap-2 overflow-hidden border border-gray-800 ">
+                <div className=" flex flex-col p-4 mt-8 gap-2 overflow-hidden border-gray-800 ">
                     <div className="  text-description-2">เพิ่มข้อมูลูกค้าใหม่</div>
                     <div className=" grid md:grid-cols-12 *:not-first:not-[button]:col-span-4 *:border-gray-800 *:border  gap-2 *:rounded-lg  *:p-2 *:flex *:flex-col *:justify-center *:gap-2 ">
                         <input type="text" name="customerId" id="" hidden defaultValue={customerTarget?.id} />

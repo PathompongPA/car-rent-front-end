@@ -44,11 +44,11 @@ export default function Brander() {
     let isFristImage = index === 0
     let isOnlyOneImage = list?.length === 1
     return (
-        <div className="brander ... relative items-start justify-center | w-full gap-4 | pt-16 xl:pt-0  md:" >
+        <div className="brander ... relative items-start justify-center | w-full gap-4 | pt-16 xl:pt-0  md:max-w-7xl" >
 
             <div className="brander__interface ... flex flex-col justify-center absolute | w-full h-full top-0" >
 
-                <div className={`brander__next-and-pre ... absolute flex | h-fit w-full p-4 || *:absolute *:justify-center *:items-center *:rounded-full *:aspect-1/1 *:font-black  *:w-[10vw] *:md:w-[3vw] *:md:text-xl *:bg-white/80 *:text-black ${isOnlyOneImage & "hidden"}`} >
+                <div className={`brander__next-and-pre ... absolute flex | h-fit w-full p-4 || *:absolute *:justify-center *:items-center *:rounded-full *:aspect-1/1 *:font-black  *:w-[10vw] *:md:w-[3vw] *:md:text-xl *:bg-white/80 *:text-black ${isOnlyOneImage && "hidden"}`} >
                     <div className={`brander__btn-pre-image --btn ... left-4 ${isFristImage ? "hidden" : "flex"}`} onClick={handleScrollPre} > {`<`} </div>
                     <div className={`brander__btn-next-image --btn ... right-4 flex`} onClick={handleScrollNext} > {`>`} </div>
                 </div>
@@ -64,9 +64,9 @@ export default function Brander() {
 
             </div >
 
-            <div className="brander__slide-image --scroll-hide ... flex flex-row snap-x snap-mandatory overflow-x-scroll md:overflow-x-scroll overflow-y-hidden | w-full ">
+            <div className="brander__slide-image --scroll-hide ... flex flex-row snap-x snap-mandatory overflow-x-scroll md:overflow-x-scroll overflow-y-hidden | w-full  ">
                 {list?.map((image, _index) =>
-                    <img className="brander__image ... snap-center md:h-[400px] md:w-7xl object-cover aspect-16/9 " src={image} alt="big image" key={image + _index} />
+                    <img className="brander__image ... snap-center  md:w-7xl object-cover aspect-21/9  " src={image} alt="big image" key={image + _index} />
                 )}
             </div>
 
