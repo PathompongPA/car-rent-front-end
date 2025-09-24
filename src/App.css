@@ -9,21 +9,21 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #b3b3b3;
+  background-color: #b3b3b300;
   /* ฟ้า (Tailwind blue-500) */
   border-radius: 9999px;
   /* โค้ง */
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #ffffff;
+  background-color: #ffffff00;
   /* เทา (Tailwind gray-200) */
 }
 
 /* สำหรับ Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #b3b3b3#ffffff;
+  scrollbar-color: #b3b3b3 #ffffff00;
   /* thumb track */
 }
 
