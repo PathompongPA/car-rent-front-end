@@ -13,7 +13,8 @@ export default function ResultCar() {
         }) :
         Car.data.filter((item) => {
             let isBrandValid = item.brand.brandName === searchBrand
-            return isBrandValid
+            let isCarNotHide = item.isDelete === false
+            return isBrandValid && isCarNotHide
         }
         )
 
