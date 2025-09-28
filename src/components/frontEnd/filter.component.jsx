@@ -68,7 +68,7 @@ export default function Filter() {
                             "
             >
 
-                <div className={`search-car__container-logo --- absolute *:absolute md:min-w-[1080px] *:p-4 *:px-6 *:z-20 md:flex h-2 left-8 top-19 text-2xl *:bg-gray-100/30 *:text-black ${document.getElementsByClassName("search-car__card")[0]?.clientWidth >= 900 ? "*:flex" : "*:hidden"}  `}>
+                <div className={`search-car__container-logo --- absolute *:absolute md:min-w-[1080px] *:p-4 *:px-6 *:z-20 md:flex h-2 left-8 top-19 text-2xl *:bg-gray-100/30 *:text-black ${document.getElementsByClassName("search-car__card")[0]?.clientWidth >= 900 ? "flex" : "hidden"} `}>
                     <button className="search-car__btn-pre --btn --- p-2 px-4 rounded-full left-0 " type="button" onClick={() => { scroll(-1) }}>{`<`}</button>
                     <button className="search-car__btn-next --btn --- p-2 px-4 rounded-full right-0 " type="button" onClick={() => { scroll(1) }}>{`>`}</button>
                 </div>
