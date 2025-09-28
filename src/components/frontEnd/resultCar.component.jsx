@@ -34,10 +34,12 @@ export default function ResultCar() {
                                   hover:text-white hover:bg-blue-2/90
                                   group
                                   hover:z-20
+                                  relative
+                                  *:duration-1000
                                    "
                         key={`${id}+${index}`} >
-                        <img className="result-car__img >> aspect-16/9  object-cover | w-full rounded-lg | md:w-full " src={carThumbnail} alt={`thumbnail-${brand.brandName}-${carName}`} />
-                        <h1 className="result-car__title >> w-full text-nowrap text-center overflow-ellipsis overflow-hidden font-thin | md:text-center md:p-4">{`${brand.brandName} ${carName}`}</h1>
+                        <img className="result-car__img >> aspect-3/2  object-cover | w-full rounded-lg | md:w-full brightness-90 group-hover:brightness-100 " src={carThumbnail} alt={`thumbnail-${brand.brandName}-${carName}`} />
+                        <h1 className="result-car__title >> absolute bottom-0 w-full text-white text-end text-2xl text-nowrap  overflow-ellipsis overflow-hidden font-thin | p-4">{`${brand.brandName} ${carName}`}</h1>
                     </Link>
                 )}
             </div>
