@@ -17,7 +17,6 @@ export default function Calendar() {
     // const { bookedDates } = Car.data.find((element) => element.id === parameCarId)
 
     const { bookedDates } = Car.data.filter((item) => item?.id === parameCarId)[0]
-    console.log(Car.data)
     // .find((element) => element.id === parameCarId)
 
     useEffect(() => {
@@ -74,19 +73,20 @@ export default function Calendar() {
                         <h1 className="calendar__day-in-week *** rounded-md p-2 | text-center font-black text-white bg-blue-1 | lg:p-0 lg:text-title-3 " key={`day-in-week-${index}`}>{dayInWeek}</h1>)}
                 </div>
 
-                <div className={`calendar__container-day *** grid grid-rows grid-cols-7 items-center | gap-1 h-full | text-description-1  `}>
+                <div className={`calendar__container-day *** grid grid-rows grid-cols-7 items-center | gap-1 md:gap-2 h-full | text-description-1  `}>
                     {booking && arrayDay.map((day) => {
                         let isBooking = booking.some((element) => element === day.format("YYYY-MM-DD"))
                         let isToday = toDay === day.format("YYYY-MM-DD")
-                        let isOutOfMonth = calendarNow.format("MM") === day.format("MM")
+                        let isOutOfMonth = calendarNow.format("MM") !== day.format("MM")
                         let Day = Number(day.format("DD"))
-                        let highlightToDay = "rounded-md bg-blue-1 text-white"
+                        console.log("is to day : ", isToday, toDay, day.format("YYYY-MM-DD"))
+                        let highlightToDay = "text-amber-400  "
                         let highlightBooking = "text-white bg-red-700 "
                         let highlightFree = "text-white bg-green-700 "
                         return (
-                            <div className={`calendar__day *** flex flex-col items-center | p-1 rounded-md | text-description-3 font-black | md:p-4 lg:justify-center lg:items-center ${isToday && highlightToDay} ${isBooking ? highlightBooking : isOutOfMonth && highlightFree}`} key={day}>
-                                <div className={`text-sm md:text-description-1`} > {isOutOfMonth && Day} </div>
-                                <div className={`calendar__status-booking *** text-xs md:text-description-3`}>{isBooking ? isOutOfMonth && "จอง" : isOutOfMonth && "ว่าง"}</div>
+                            <div className={`calendar__day *** flex flex-col items-center | p-1 rounded-md | text-description-3 font-black | md:p-4 lg:justify-center lg:items-center *:border-0  ${isBooking ? highlightBooking : highlightFree} ${isOutOfMonth && "invisible"} `} key={day}>
+                                <div className={`text-sm md:text-description-1 ${isToday && highlightToDay} `} > {Day} </div>
+                                <div className={`calendar__status-booking *** text-xs md:text-description-3 ${isToday && highlightToDay}`}>{isBooking ? "จอง" : "ว่าง"}</div>
                             </div>
                         )
                     }
