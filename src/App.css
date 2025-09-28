@@ -80,7 +80,7 @@
   }
 
   .--btn {
-    @apply active:text-golden-1 hover:text-golden-1 hover:cursor-pointer hover:md:scale-[1.1] active:scale-[.9] active:md:scale-[.99] transition-all duration-500 select-none
+    @apply active:text-golden-1 hover:text-golden-1 hover:cursor-pointer hover:md:scale-[1.05] active:scale-[.9] active:md:scale-[.99] transition-all duration-500 select-none
   }
 
   .active {
