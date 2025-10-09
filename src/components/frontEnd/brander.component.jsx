@@ -66,7 +66,7 @@ export default function Brander() {
 
             <div className="brander__slide-image --scroll-hide ... flex flex-row snap-x snap-mandatory overflow-x-scroll md:overflow-x-scroll overflow-y-hidden | w-full  ">
                 {list?.map((image, _index) =>
-                    <img className="brander__image ... snap-center  md:w-7xl object-cover aspect-21/9  " src={image} alt="big image" key={image + _index} />
+                    <img className="brander__image ... snap-center  md:w-7xl object-cover aspect-21/9 brightness-95  " src={image} alt="big image" key={image + _index} />
                 )}
             </div>
 
