@@ -467,7 +467,7 @@ export default function CarPage() {
                         msgAlert("บันทึกสำเร็จ")
                     }
                 }}>
-                    <img className="car-manger__btn-hide-car --- p-1 brightness-75 hover:brightness-50  aspect-square rounded-lg  bg-gray-900/30 object-cover " src={isHide ? "../../../public/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" : "../../../public/visibility_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"} ></img>
+                    <img className="car-manger__btn-hide-car --- p-1 brightness-75 hover:brightness-50  aspect-square rounded-lg  bg-gray-900/30 object-cover " src={isHide ? "/src/assets/visibility_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" : "/src/assets/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"} ></img>
                 </div>
             </div >
         )
