@@ -10,7 +10,8 @@ export default function LoginPage() {
         if (isBodyRady) {
             const { data } = await fetchApi("POST", "/api/user/login", JSON.stringify(body))
             let isLogin = data.isLogin
-            isLogin ? location.reload(true) : alert(data)
+            console.log(data)
+            isLogin ? location.reload(true) : alert(data.msg)
             isLogin && alert("เข้าสู่ระบบสำเร็จ")
         }
         else {

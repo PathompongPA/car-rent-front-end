@@ -38,18 +38,6 @@ export default function FormBrandCar({ index = "", data = { id: null, brandImg: 
         }
     }
 
-    // async function handleBtnDelte() {
-    //     let form = getForm()
-    //     let brandName = form.get("brandName")
-    //     let brandId = form.get("id")
-    //     if (confirm(`คุณต้องการลบ ${brandName} ออกจากฐานข้อมูล ใช่ หรือ ไม่`) === true) {
-    //         let body = JSON.stringify({ "id": brandId })
-    //         const { isSuccess, msg } = await fetchApi("DELETE", "/api/car/brand/", body)
-    //         isSuccess ? alert(`ลบ ${brandName} สำเร็จ`) : alert(`ลบ ${brandName} ไม่สำเร็จ <${msg}>`)
-    //         isSuccess && recallPage()
-    //     }
-    // }
-
     function handleBtnEdit() {
         let inputName = document.getElementsByClassName(`form__brand-name-${index}`)[0]
         inputName.readOnly = !inputName.readOnly
@@ -89,7 +77,6 @@ export default function FormBrandCar({ index = "", data = { id: null, brandImg: 
 
             <div className={`form__container-btn-${index} *** flex gap-4 *:rounded-lg *:p-2 `}>
                 <button className={`form__btn-save-${index} *** --btn flex-1/2 bg-lime-800 ${isCard && "hidden"} `} type="button" onClick={handleBtnSave}>บันทึก</button>
-                {/* <button className={`form__btn-delete-${index} *** --btn flex-1/2 bg-red-800 ${!isCard && "hidden"} `} type="button" onClick={handleBtnDelte}>ลบ</button> */}
                 <button className={`form__btn-cancel-${index} *** --btn flex-1/2 hidden `} type="button" onClick={handleBtnEdit}>ยกเลิก</button>
                 <button className={`form__btn-edit-${index} *** --btn flex-1/2 bg-blue-800 ${!isCard && "hidden"}`} type="button" onClick={handleBtnEdit}>แก้ไข</button>
             </div>

@@ -1,7 +1,7 @@
-import { useLoaderData } from "react-router";
-import CalendarAdmin from "./calendar.admin.component";
-import { fetchApi } from "../../utility";
 import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router";
+import { fetchApi } from "../../utility";
+import CalendarAdmin from "./calendar.admin.component";
 
 export default function FormBooking() {
     let { Car, Customer } = useLoaderData()
@@ -101,7 +101,7 @@ export default function FormBooking() {
     }
 
     return (
-        <form className={`form-booking *** w-full h-fit  rounded-lg border-white p-4 pt-20 max-w-7xl `} onChange={formChange} onSubmit={submitForm}>
+        <form className={`form-booking *** w-full h-fit  rounded-lg border-white p-4 pt-20 max-w-[1070px] `} onChange={formChange} onSubmit={submitForm}>
             <h1 className="hidden md:flex md:pl-4 row-span-10 text-description-1 md:text-title-3 font-bold justify-center items-center p-2 " >ระบบ จองรถ</h1>
 
             <div className="status-bar md:row-span-5 hidden md:flex pl-4  justify-center items-center gap-[10vw] md:text-description-3 font-bold ">

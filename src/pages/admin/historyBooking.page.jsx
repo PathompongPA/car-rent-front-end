@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { unparse } from "papaparse";
 import { useMemo, useState } from "react";
-import { useLoaderData } from "react-router"
+import { useLoaderData } from "react-router";
 import { fetchApi } from "../../utility";
 
 export default function HistoryBookingPage() {
@@ -113,7 +113,7 @@ export default function HistoryBookingPage() {
                 </div>
                 <div className="col-span-2">
                     <label className=" cursor-pointer " htmlFor="filter-checkout">วันคืนรถ</label>
-                    <input className="p-0 md:p-2" type="date" name="" id="filter-checkout" onChange={filterByCheckOut} onKeyDown={"return fales;"} />
+                    <input className="p-0 md:p-2" type="date" name="" id="filter-checkout" onChange={filterByCheckOut} />
                 </div>
                 <div className="col-span-4 md:col-span-2 flex">
                     <label htmlFor="">วันที่ทำการจอง</label>

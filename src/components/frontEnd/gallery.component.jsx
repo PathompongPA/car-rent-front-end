@@ -5,6 +5,7 @@ export default function GalleryCar() {
     const [searchParame, setSearchParame] = useSearchParams()
     let parameCarId = searchParame.get("id")
     const { Car } = useLoaderData();
+    console.log(Car)
     const { brand, carName, Imgs } = Car.data.filter((item) => item.id === parameCarId)[0]
     const { brandName } = brand;
     const amount = Car.data.length;
