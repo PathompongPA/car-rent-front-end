@@ -38,7 +38,7 @@ export default function ResultCar() {
                                   *:duration-1000
                                    "
                         key={`${id}+${index}`} >
-                        <img className="result-car__img >> aspect-3/2  object-cover | w-full rounded-lg | md:w-full brightness-90 group-hover:brightness-100 " src={carThumbnail} alt={`thumbnail-${brand.brandName}-${carName}`} />
+                        <img className="result-car__img >> aspect-3/2 bg-blue-2/80 object-cover | w-full rounded-lg | md:w-full brightness-90 group-hover:brightness-100 " src={carThumbnail} alt={`thumbnail-${brand.brandName}-${carName}`} />
                         <h1 className="result-car__title >> absolute bottom-0 w-full text-white text-end text-2xl text-nowrap  overflow-ellipsis overflow-hidden font-thin | p-4">{`${brand.brandName} ${carName}`}</h1>
                     </Link>
                 )}

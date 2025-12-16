@@ -4,11 +4,7 @@ import FormBrandCar from "./formBrand.component";
 import FormCar from "./formCar.component";
 import FormContent from "./formContent.admin";
 import FormCustomer from "./formCustomer.component";
+import Loading from "./loading.component";
 export {
-    FormCar,
-    FormBrandCar,
-    FormCustomer,
-    FormBooking,
-    Admin,
-    FormContent
-}
+    Admin, FormBooking, FormBrandCar, FormCar, FormContent, FormCustomer, Loading
+};

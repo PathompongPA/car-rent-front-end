@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { useLoaderData, useSearchParams } from "react-router";
 
 export default function Calendar() {
@@ -79,7 +79,6 @@ export default function Calendar() {
                         let isToday = toDay === day.format("YYYY-MM-DD")
                         let isOutOfMonth = calendarNow.format("MM") !== day.format("MM")
                         let Day = Number(day.format("DD"))
-                        console.log("is to day : ", isToday, toDay, day.format("YYYY-MM-DD"))
                         let highlightToDay = "text-amber-400  "
                         let highlightBooking = "text-white bg-red-700 "
                         let highlightFree = "text-white bg-green-700 "

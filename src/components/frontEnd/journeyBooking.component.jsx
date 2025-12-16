@@ -2,14 +2,13 @@ import { useLoaderData } from "react-router";
 
 export default function JourneyBooking() {
     const { Content } = useLoaderData();
-    let title = Content.data.filter((item) => item.id === "journeyBooking.title")[0]?.value.text
-    let card = Content.data.filter((item) => item.id === "journeyBooking.card")[0]?.value
+    const { journeyBooking } = Content;
 
     return (
         <div id="journeyBooking" className=" journey-booking >> flex flex-col justify-center items-center | p-4 py-8  pb-0 gap-8 w-full h-full | lg:max-w-7xl lg:snap-center pt-24" >
-            <h1 className="journey-booking__title >> hidden md:block text-blue-1 font-black text-title-2 | md:text-title-1">{title}</h1>
+            <h1 className="journey-booking__title >> hidden md:block text-blue-1 font-black text-title-2 | md:text-title-1">{journeyBooking.title.text}</h1>
             <div className="journey-flex -card >> flex justify-center items-center flex-wrap | gap-4 w-full h-full | lg:gap-8 ">
-                {card.map(({ title, detail }, index) =>
+                {journeyBooking.card.map(({ title, detail }, index) =>
                     <button
                         // style={{ backgroundImage: `url(${image})` }}
                         className={`journey-booking__card --btn >> bg-cover group ease-in flex flex-col xl:justify-end items-center | w-full p-1 h-full | bg-blue-1  | rounded-lg | text-white text-xl font-extrabold | lg:w-[390px] text-center md:h-[400px] xl:h-[450px] `} key={`journey-booking-card-${index}`} index={index}>

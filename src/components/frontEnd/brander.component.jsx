@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router";
 
 export default function Brander() {
     let { Content } = useLoaderData();
-    const list = Content?.data.filter(item => item.id === "viewBoard.image")[0].value
+    const { viewBoard } = Content;
     let [index, setIndex] = useState(0)
 
     useEffect(() => {
@@ -15,7 +15,7 @@ export default function Brander() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     function handleScrollNext() {
-        if (index === list.length - 1) {
+        if (index === viewBoard.length - 1) {
             setIndex(0)
             scroll(0)
         } else {
@@ -42,7 +42,7 @@ export default function Brander() {
     }
 
     let isFristImage = index === 0
-    let isOnlyOneImage = list?.length === 1
+    let isOnlyOneImage = viewBoard?.length === 1
     return (
         <div className="brander ... relative items-start justify-center | w-full gap-4 | pt-16 xl:pt-0  md:max-w-7xl" >
 
@@ -54,7 +54,7 @@ export default function Brander() {
                 </div>
 
                 <div className={`brander__display-dot ... absolute bottom-0 flex flex-row justify-center | h-[4vh] md:h-[5vh] w-full gap-2 lg:gap-4 ${isOnlyOneImage && "hidden"} `} >
-                    {list?.map((param, _index) => {
+                    {viewBoard?.map((param, _index) => {
                         let isLocation = index === _index
                         return (
                             <div className={`brander__dot ... h-[1.5vh] rounded-full  w-[1.5vh] md:w-[1vh] md:h-[1vh] aspect-1/1 ${isLocation ? "bg-golden-1" : "bg-white"} `} key={_index}></div>
@@ -64,9 +64,9 @@ export default function Brander() {
 
             </div >
 
-            <div className="brander__slide-image --scroll-hide ... flex flex-row snap-x snap-mandatory overflow-x-scroll md:overflow-x-scroll overflow-y-hidden | w-full  ">
-                {list?.map((image, _index) =>
-                    <img className="brander__image ... snap-center  md:w-7xl object-cover aspect-21/9 brightness-95  " src={image} alt="big image" key={image + _index} />
+            <div className="brander__slide-image --scroll-hide ... flex flex-row snap-x snap-mandatory overflow-x-auto scroll md:overflow-x-auto overflow-y-hidden | w-full  ">
+                {viewBoard?.map((image, _index) =>
+                    <img className="brander__image ... snap-center w-full  object-cover aspect-21/9 brightness-95  " src={image} alt="big image" key={image + _index} />
                 )}
             </div>
 

@@ -5,7 +5,6 @@ export default function GalleryCar() {
     const [searchParame, setSearchParame] = useSearchParams()
     let parameCarId = searchParame.get("id")
     const { Car } = useLoaderData();
-    console.log(Car)
     const { brand, carName, Imgs } = Car.data.filter((item) => item.id === parameCarId)[0]
     const { brandName } = brand;
     const amount = Car.data.length;
@@ -28,7 +27,6 @@ export default function GalleryCar() {
     function handleOnClickMiniImage(e) {
         setIndexBigImg(Number(e.target.getAttribute("index")))
     }
-    // console.log("id", Car.data.findIndex((item) => item.id === parameCarId))
 
     return (
         <div id="gallery" className="gallery-car *** flex flex-col justify-center items-center | pt-17 | md:p-0 lg:max-w-7xl xl:min-w-7xl lg:snap-center ">

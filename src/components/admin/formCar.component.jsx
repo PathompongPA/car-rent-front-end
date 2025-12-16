@@ -1,6 +1,6 @@
+import { useEffect, useRef, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { fetchApi } from "../../utility";
-import { useEffect, useRef, useState } from "react";
 
 export default function FormCar({
     index = "",
@@ -169,16 +169,6 @@ export default function FormCar({
         ]);
     }
 
-    async function handleBtnDelete() {
-        let form = getForm(`form-car-${index}`)
-        let id = form.get("id")
-        let body = JSON.stringify({ id: id })
-        const { isSuccess, msg } = await fetchApi("delete", "/api/car/", body)
-        isSuccess ? alert("บันทึกสำเร็จ") : alert(msg)
-        isSuccess && location.reload(true)
-        // & recallPage()
-    }
-
     function handleToggleEdit() {
         setIsCard(!IsCard)
     }
@@ -340,7 +330,6 @@ export default function FormCar({
 
             <fieldset className="container-btn-${index} flex gap-4 *:p-2 *:flex-1/2 *:rounded-lg *:hover:cursor-pointer justify-center">
                 <button className={`form-car__btn-save-${index} *** --btn flex-1/2 bg-lime-800 ${IsCard && "hidden"} `} type="button" onClick={handleBtnSave}>บันทึก</button>
-                {/* <button className={`form-car__btn-delete-${index} *** --btn flex-1/2  ${!IsCard && "hidden"} `} type="button" onClick={handleBtnDelete} >ซ้อนจากหน้าเว็บ</button> */}
                 <button className={`form-car__btn-cancel-${index} *** --btn flex-1/2 ${IsCard & index !== "" && "hidden"} ${!IsCard & index === "" && "hidden"}`} type="button" onClick={handleToggleEdit}>ยกเลิก</button>
                 <button className={`form-car__btn-edit-${index} *** --btn flex-1/2 bg-blue-800 ${!IsCard && "hidden"}`} type="button" onClick={handleToggleEdit} >แก้ไข</button>
             </fieldset>

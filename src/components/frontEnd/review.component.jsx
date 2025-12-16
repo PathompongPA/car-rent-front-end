@@ -3,7 +3,6 @@ import { useLoaderData } from "react-router";
 
 export default function Review() {
     const { Reviews } = useLoaderData();
-    console.log("reviews", Reviews)
     const [showMore, setShowMore] = useState(false)
     function handleBtnShowMore() {
         setShowMore(!showMore)
@@ -15,13 +14,13 @@ export default function Review() {
 
             <h3 className="review__description >> text-center font-bold text-blue-1">{`${"จากผู้ใช้งาน"} ${Reviews.length} รีวิว`}</h3>
 
-            <div className={`review__container-card >> flex flex-col md:grid md:grid-cols-3 relative overflow-hidden items-center justify-self-center self-center | w-full gap-4  ${showMore ? "h-full" : "h-[70vh] md:h-[50vh]"} duration-600`}>
+            <div className={`review__container-card >> flex flex-col md:grid md:grid-cols-3 relative overflow-hidden items-center justify-self-center self-center | w-full gap-4  ${showMore ? "h-full" : "h-[70vh] md:h-[50vh]"} duration-300`}>
 
-                {Reviews.map(({ profilePicUrl, name, text, time }, index) =>
+                {Reviews.map(({ profilePicBase64, name, text, time }, index) =>
                     <div className="review__card >> flex flex-col w-full h-full p-2 pb-8 | border border-golden-1 rounded-lg | md:p-4 " key={`review-card-${index}`}>
 
                         <div className="review__container-header-card >> flex items-center | w-full md:gap-4 gap-4 ">
-                            <img className="review_card-img >> aspect-1/1 | w-[50px] bg-gray-1 rounded-full" src={profilePicUrl} />
+                            <img className="review_card-img >> aspect-1/1 | w-[50px] bg-gray-1 rounded-full" src={profilePicBase64} />
                             <div className="review__container-title-card">
                                 <h3 className="review__card-review-name >> font-bold text-blue-1">{name}</h3>
                                 <div className="review__card-date >> text-xs font-medium text-blue-1">{time}</div>

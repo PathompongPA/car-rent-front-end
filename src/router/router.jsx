@@ -1,5 +1,5 @@
 import { createHashRouter } from "react-router";
-import { Admin, FormBooking, FormContent } from "../components/admin";
+import { Admin, FormBooking, FormContent, Loading } from "../components/admin";
 import { Calendar, Contact, DescriptionCar, Filter, Footer, GalleryCar, JourneyBooking, NavigationBar, Promotion, QAndAComponent, ResultCar, Review } from "../components/frontEnd";
 import { CarPage, CustomerPage, ErrorPage, HistoryBookingPage, OutOfPage } from "../pages/admin";
 import { HomePage } from "../pages/frontEnd";
@@ -67,9 +67,28 @@ async function carLoader() {
     const Car = await carRes
     const Customer = await customer
     const Booking = await booking
-    const Content = await content
     const Reviews = await reviews
-    return { Brand, Car, Customer, Booking, Content, Reviews, AllBrand }
+    function getValueById(_rowData, _id) { return _rowData?.data?.filter(({ id }) => id === _id)[0].value }
+    let Content = {
+        logo: getValueById(content, "logo"),
+        navbar: getValueById(content, "navbar.title"),
+        viewBoard: getValueById(content, "viewBoard.image"),
+        journeyBooking: {
+            title: getValueById(content, "journeyBooking.title"),
+            card: getValueById(content, "journeyBooking.card"),
+        },
+        contact: {
+            title: getValueById(content, "contact.title"),
+            card: getValueById(content, "contact.card"),
+        },
+        question: {
+            title: getValueById(content, "Qa.title"),
+            card: getValueById(content, "Qa.card"),
+        },
+        address: getValueById(content, "footer.address"),
+        socialMedia: getValueById(content, "socialMedia")
+    }
+    return { Brand, Car, Customer, Booking, Reviews, AllBrand, Content }
 }
 
 const router = createHashRouter([
@@ -110,7 +129,7 @@ const router = createHashRouter([
             }
         ],
         loader: adminLoader,
-        hydrateFallbackElement: <div>Loading...</div>
+        hydrateFallbackElement: <Loading />
 
     },
     {

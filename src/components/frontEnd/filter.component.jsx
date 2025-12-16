@@ -4,7 +4,7 @@ export default function Filter() {
     const [searchParam] = useSearchParams();
     let searchBrand = searchParam.get('brand')
     let { Brand, Car } = useLoaderData()
-    Brand = Brand.data.filter(brand => Car.data.some(car => car.brand.id === brand.id))
+    Brand = Brand?.data?.filter(brand => Car.data.some(car => car.brand.id === brand.id))
 
     // alert(document.getElementsByClassName("search-car__card")[0]?.clientWidth)
     function scroll(position) {
@@ -74,20 +74,9 @@ export default function Filter() {
                     <button className="search-car__btn-next --btn --- p-2 px-4 rounded-full right-0 " type="button" onClick={() => { scroll(1) }}>{`>`}</button>
                 </div>
 
-                {Brand.map(({ brandName, brandImg }, index) =>
-                    <Link
-                        to={`/?brand=${brandName}`}
-                        className={` search-car__brand-card --btn ${searchBrand === brandName && "active"} ... 
-                            
-                            group
-                            aspect-1/1
-                            w-[100px]
-                            p-1
-                            xl:min-w-[150px]
-                            xl:px-4
-                            rounded-lg
-                                    `}
-                        key={brandName + index}
+                {Brand?.map(({ brandName, brandImg }, index) =>
+                    <Link to={`/?brand=${brandName}`} className={` search-car__brand-card --btn ${searchBrand === brandName && "active"} ...  group aspect-1/1 w-[100px] p-1 xl:min-w-[150px] xl:px-4 rounded-lg `}
+                        key={index}
                     >
                         <img className="search-car__brand-image >> w-full  aspect-1/1 object-scale-down text-blue-2 | md:aspect-1/1 | md:object-scale-down | " src={brandImg} alt="" />
                         <p className="search-car__brand-name  >> group-hover:text-golden-1 hidden | text-center font-bold text-blue-2 | xl:block" >{brandName}</p>
