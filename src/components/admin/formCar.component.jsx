@@ -20,7 +20,6 @@ export default function FormCar({
             }
         ]
     } }) {
-    console.log(data)
 
     const { id, carName, carDescription, brandId, Imgs, offers, carThumbnail } = data;
     const { AllBrand } = useLoaderData();
@@ -81,8 +80,6 @@ export default function FormCar({
             }
         }
         setFilesArray((state) => [...state, ...arrayFile])
-        // setImages(arrayImage)
-        // setImages(arrImage)
     }
 
     function validateDayPrice(form) {
@@ -92,16 +89,8 @@ export default function FormCar({
         let isValid = true;
 
         for (let index = 0; index < days.length; index++) {
-            // const day = days[index];
             const price = prices[index];
-
-            // const dayNum = Number(day);
             const priceNum = Number(price);
-
-            // if (day === "" || isNaN(dayNum) || dayNum < 0) {
-            //     alert(`ระดับราคาที่ ${index + 1}: จำนวนวันไม่ถูกต้อง`);
-            //     isValid = false;
-            // }
 
             if (price === "" || isNaN(priceNum) || priceNum <= 0) {
                 alert(`ระดับราคาที่ ${index + 1}: ราคาต้องมากกว่า 0`);
@@ -151,8 +140,6 @@ export default function FormCar({
             formCar.append("carImage", file)
         })
 
-        console.log(formCar.getAll("carImage"))
-
         if (isFormCarValid & isTairPriceValid) {
             const { isSuccess, msg } = await fetchApi(isCard ? "PUT" : "POST", "/api/car/", formCar, {})
             isSuccess ? alert("บันทึกสำเร็จ") : alert(msg)
@@ -186,29 +173,6 @@ export default function FormCar({
         file.name !== "" && setThumbnail(URL.createObjectURL(file))
     }
 
-    // const dragItem = useRef(null);
-
-    // const handleDragStart = (e, index) => {
-    //     e.currentTarget.classList.add("--dragging");
-    //     dragItem.current = index;
-    // };
-
-    // const handleDragEnter = (e, index) => {
-    //     const draggedOverItem = index;
-    //     if (dragItem.current === draggedOverItem) return;
-    //     const updatedList = [...images];
-    //     const draggedItemContent = updatedList[dragItem.current];
-    //     updatedList.splice(dragItem.current, 1);
-    //     updatedList.splice(draggedOverItem, 0, draggedItemContent);
-    //     dragItem.current = draggedOverItem;
-    //     setImages(updatedList);
-    // };
-
-    // const handleChangeInputFile = (e) => {
-    //     const files = Array.from(e.target.files);
-    //     setFilesArray(files);
-    // };
-
     const reorder = (arr, from, to) => {
         const updated = [...arr];
         const [moved] = updated.splice(from, 1);
@@ -238,7 +202,6 @@ export default function FormCar({
     }
 
     async function handleClickHide() {
-        console.log("click hide")
         let body = JSON.stringify({ id: id, isDelete: !data.isDelete })
         let method = "POST"
         let path = "/api/car/hide"
@@ -293,7 +256,7 @@ export default function FormCar({
                     <h1 className={`${filesArray.length === 0 ? "" : "hidden"} text-gray-500 pt-4 w-full text-center h-8`}>ยังไม่ได้เพิ่มรูป</h1>
                     {filesArray && filesArray.map((file, _index) =>
                         <div className={`form-car__box-image-${index}-${_index} --- min-w-[200px] aspect-video ${IsCard ? "border-0" : "border-2 hover:cursor-move "} p-1 relative border border-gray-300 border-dashed rounded-lg`} >
-                            <button className={`form-car__btn-delete-image-${index}-${_index} --- ${IsCard ? "hidden" : ""} -right-1 -top-1 z-10 absolute px-4 py-1 bg-red-600 font-black text-2xl rounded-full hover:cursor-pointer`} type="button" onClick={() => { setFilesArray(state => { let newState = [...state]; newState.splice(_index, 1); console.log(newState); return newState }) }}>-</button>
+                            <button className={`form-car__btn-delete-image-${index}-${_index} --- ${IsCard ? "hidden" : ""} -right-1 -top-1 z-10 absolute px-4 py-1 bg-red-600 font-black text-2xl rounded-full hover:cursor-pointer`} type="button" onClick={() => { setFilesArray(state => { let newState = [...state]; newState.splice(_index, 1); return newState }) }}>-</button>
                             < img
                                 className={`form-car__imag-${index}-${_index} --- w-full h-full aspect-16/9 object-cover bg-gray-800/40 rounded-lg `}
                                 src={file && URL.createObjectURL(file)}

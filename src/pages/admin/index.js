@@ -1,4 +1,4 @@
-import CarPage from "./car.page";
+import CarPage from "./car.page/car.page";
 import CustomerPage from "./customer.page";
 import ErrorPage from "./error.page";
 import HistoryBookingPage from "./historyBooking.page";

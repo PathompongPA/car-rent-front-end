@@ -12,6 +12,7 @@ async function loadFile(url) {
     const fileType = blob.type;
     return new File([blob], fileName, { type: fileType });
 }
+
 async function loadCarImages(urls) {
     return await Promise.all(urls.map(async (url) => await loadFile(url)));
 }
@@ -20,17 +21,19 @@ async function adminLoader() {
     const [allBrand, brandRes, carRes, customer, booking, content, reviews] = await Promise.all([
         fetchApi("GET", "/api/car/brand/all"),
         fetchApi("GET", "/api/car/brand/all"),
-        fetchApi("GET", "/api/car").then(async res => (
-            {
-                isSuccess: true,
-                data: await Promise.all(res.data.map(async item => ({
-                    ...item,
-                    Imgs: await loadCarImages(item.Imgs),
-                    carThumbnail: await Promise.resolve(loadFile(item.carThumbnail))
-                }))
-                )
-            }
-        )),
+        fetchApi("GET", "/api/car")
+        // .then(async res => (
+        //     {
+        //         isSuccess: true,
+        //         data: await Promise.all(res.data.map(async item => ({
+        //             ...item,
+        //             Imgs: await loadCarImages(item.Imgs),
+        //             carThumbnail: await Promise.resolve(loadFile(item.carThumbnail))
+        //         }))
+        //         )
+        //     }
+        // ))
+        ,
         fetchApi("GET", "/api/customer/"),
         fetchApi("GET", "/api/booking"),
         fetchApi("GET", "/api/content"),
@@ -129,6 +132,7 @@ const router = createHashRouter([
             }
         ],
         loader: adminLoader,
+        errorElement: <ErrorPage />,
         hydrateFallbackElement: <Loading />
 
     },

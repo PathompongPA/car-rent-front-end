@@ -6,5 +6,5 @@ import FormContent from "./formContent.admin";
 import FormCustomer from "./formCustomer.component";
 import Loading from "./loading.component";
 export {
-    Admin, FormBooking, FormBrandCar, FormCar, FormContent, FormCustomer, Loading
+    Admin, FormBooking, FormBrandCar, FormCar, FormContent, FormCustomer, Loading,
 };

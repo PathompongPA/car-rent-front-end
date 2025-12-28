@@ -10,7 +10,7 @@ export default function DescriptionCar() {
     return (
         <div className="description-car *** flex flex-col w-full p-4 *:text-blue-1 gap-2 md:max-w-7xl ">
             <h1 className="text-lg text-blue-1  font-black  md:text-description-1 ">รายละเอียด</h1>
-            <p className="w-full break-words ">{car.carDescription}</p>
+            <p className="w-full break-words whitespace-pre  ">{car.carDescription}</p>
         </div>
     )
 };

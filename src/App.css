@@ -72,7 +72,7 @@
 
   input,
   textarea {
-    @apply p-2 rounded-lg border border-gray-800
+    @apply p-2 rounded-lg border border-gray-800 w-full
   }
 
   label {
@@ -85,8 +85,6 @@
 
   .active {
     @apply bg-radial to-black/10 from-0% duration-75 md:duration-600
-    /* bg-gradient-to-tr from-blue-2 to-blue-1/80 */
-    /* bg-gradient-to-tr from-blue-2 to-blue-1/80 text-white */
   }
 
   .hidden-important {
