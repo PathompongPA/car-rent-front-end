@@ -1,8 +1,6 @@
-import { useRef } from "react"
 import AllImage from "./all.image.component"
 import Box from "./Box.component"
 import Btn from "./btn.component"
-import Gallery from "./gallery.component"
 import OfferForm from "./offer.form.component"
 import Title from "./title.component"
 
@@ -60,9 +58,9 @@ function TextBox({ className, name, value, onChange }) {
         }
     }
     return (
-        <Box variant="col" className={`${className}`}  >
+        <Box variant="col" className={`${className} p-0`}  >
             <Title variant="secondary" >{name}</Title>
-            <textarea className=" w-full h-full whitespace-nowrap" value={value} onChange={(e) => { onChange(e.target.value) }} placeholder={`กรุณากรอก ${name}`} onKeyDown={onKey}></textarea>
+            <textarea className=" w-full h-full  whitespace-nowrap" value={value || ""} onChange={(e) => { onChange(e.target.value) }} placeholder={`กรุณากรอก ${name}`} onKeyDown={onKey}></textarea>
         </Box>
     )
 }
@@ -83,7 +81,7 @@ function FormCar({ allBrand, name, description, thumbnail, brandId, offer, image
     let FormCar = Box
     let OfferSession = Box
     return (
-        <FormCar className={" flex flex-col md:grid  md:grid-rows-1 md:grid-cols-2 bg-gray-900 gap-8  p-16 md:p-8 min-w-[80vw] min-h-[80vh] max-h-[95vh] max-w-[95vw]  overflow-auto  rounded-2xl "}>
+        <FormCar className={" flex flex-col md:grid  md:grid-rows-1 md:grid-cols-2 bg-gray-900 gap-8 p-8 md:p-16 min-w-[80vw] min-h-[60vh] max-h-[95vh] max-w-[95vw] md:max-h-[90vh] md:max-w-[1070px]  overflow-auto  rounded-2xl "}>
 
             <LeftSession className={" flex flex-col  md:grid md:grid-cols-2 md:grid-rows-12"} >
                 <EditImage className={"col-span-full row-span-6 "} img={thumbnail} onChange={onChangeThumbnail} name={name} onChangeName={onChangeName} onChangeBrand={onChangeBrand} allBrand={allBrand} brandId={brandId} />
@@ -97,7 +95,7 @@ function FormCar({ allBrand, name, description, thumbnail, brandId, offer, image
                 </Box>
                 <AllImage imgs={images} onDeleteImage={onDeleteImage} onDragStart={onDragStart} onDragOver={onDragOver} onDragLeave={onDragLeave} onDrop={onDrop} />
                 <OfferSession className={"col-span-full row-span-5 content-start grid grid-cols-6 h-full gap-4"}>
-                    <Box variant={"row-between"} className={"col-span-2"} >
+                    <Box variant={"row-between"} className={"col-span-full"} >
                         <Title variant="secondary"  >โปรโมชั่น</Title>
                         <Btn variant="primary" size="smaill" onClick={onAddOffer}>เพิ่ม</Btn>
                     </Box>
@@ -117,9 +115,9 @@ function FormCar({ allBrand, name, description, thumbnail, brandId, offer, image
 
             <OfferForm />
 
-            <BottmSession variant={"row"} className={"col-span-2  justify-center fixed bottom-10  left-0 w-full md:static"}>
+            <BottmSession variant={"row"} className={"col-span-2  justify-center fixed bottom-10  left-0 w-full md:static z-50"}>
                 <Btn variant="primary" onClick={onSave}>บันทึก</Btn>
-                <Btn variant="ghost" onClick={onClose} >ยกเลิก</Btn>
+                <Btn variant="primary" onClick={onClose} >ยกเลิก</Btn>
             </BottmSession>
 
         </FormCar>
@@ -127,5 +125,4 @@ function FormCar({ allBrand, name, description, thumbnail, brandId, offer, image
 };
 
 let FormEditCar = FormCar
-let FormCreateCar = FormCar
-export { FormEditCar, FormCreateCar, InputText }
+export { FormEditCar, InputText }

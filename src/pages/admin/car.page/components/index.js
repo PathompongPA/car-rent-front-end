@@ -4,7 +4,9 @@ import Btn from "./btn.component";
 import CardCar from "./card.car.component";
 import CardBrand from "./cardBrand.component";
 import { FormCreateBrand, FormEditBrand } from "./form.brand.component";
-import { FormCreateCar, FormEditCar } from "./form.car.component";
+import { FormEditCar } from "./form.car.component";
+import FormCreateCar from "./form.create.car.component";
+import TextInput from "./input.component";
 import Loading from "./loading.component";
 import Modal from "./modal.component";
 import Title from "./title.component";
@@ -20,6 +22,7 @@ export {
     FormEditBrand,
     FormCreateBrand,
     FormEditCar,
+    AllImage,
     FormCreateCar,
-    AllImage
+    TextInput
 }

@@ -10,7 +10,6 @@ export default function LoginPage() {
         if (isBodyRady) {
             const { data } = await fetchApi("POST", "/api/user/login", JSON.stringify(body))
             let isLogin = data.isLogin
-            console.log(data)
             isLogin ? location.reload(true) : alert(data.msg)
             isLogin && alert("เข้าสู่ระบบสำเร็จ")
         }
@@ -24,7 +23,7 @@ export default function LoginPage() {
             <h1 className="login-page__title --- text-title-3"> เข้าสู่ระบบ </h1>
             <form className="login-page__form-login --- *:text-white *:border *:border-gray-800 *:rounded-lg --- flex flex-col gap-4">
                 <input className="login-page__input-admin-user ---" type="text" name="userName" id="input-admin-user" placeholder="user" />
-                <div className="login-page___container-admin-password">
+                <div className="login-page___container-admin-password flex">
                     <input className="login-page__input-admin-password --- border-none" type="password" name="password" id="input-admin-password" placeholder="password" />
                     <button className="login-page__btn-show-password --- text-xs p-2 rounded-lg cursor-pointer hover:text-golden-1 border-golden-1 " type="button" onClick={() => { let inputPassword = document.getElementsByClassName("login-page__input-admin-password")[0]; inputPassword.type = inputPassword.type === "password" ? "text" : "password" }} > show</button>
                 </div>

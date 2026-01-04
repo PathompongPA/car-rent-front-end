@@ -32,11 +32,7 @@ export default function CustomerPage() {
                         <input className="border border-gray-800 p-2  rounded-lg w-full md:w-fit " type="text" placeholder="ค้นหาด้วยชื่อ" onChange={filterChange} />
                     </div>
                     <div className=" h-[50vh] py-4 md:min-h-[60vh] overflow-y-scroll md:overflow-y-auto md:p-2 ">
-                        {data?.map((item) => {
-                            console.log("item ", item)
-                            return <FormCustomer index={item.id} isCard={true} data={item} key={item.id} />
-                        }
-                        )}
+                        {data?.map((item) => <FormCustomer index={item.id} isCard={true} data={item} key={item.id} />)}
                     </div>
                 </div>
             </div>

@@ -21,6 +21,7 @@ export default function useCar(car, alertEvent) {
     const [cars, setCars] = useState(null)
     const [isReOderCar, setIsReOderCar] = useState(null)
     const [isEditCar, setIsEditCar] = useState(false)
+    const [isCreateCar, setIsCreateCar] = useState(false)
     const [positionEditCar, setPositionEditCar] = useState(null)
 
     useEffect(() => { setCars(car) }, [car])
@@ -33,7 +34,10 @@ export default function useCar(car, alertEvent) {
 
 
         },
-        create: {},
+        create: {
+            open: () => { setIsCreateCar(true); carEvent.order.cancel() },
+            close: () => { setIsCreateCar(false); revalidator.revalidate() },
+        },
         edit: {
             open: (index) => { setIsEditCar(true); setPositionEditCar(index); carEvent.order.cancel() },
             close: () => { setIsEditCar(false); setPositionEditCar(null); revalidator.revalidate() },
@@ -184,7 +188,7 @@ export default function useCar(car, alertEvent) {
         carEvent,
         positionEditCar,
         isReOderCar,
-        isEditCar
-
+        isEditCar,
+        isCreateCar
     }
 };

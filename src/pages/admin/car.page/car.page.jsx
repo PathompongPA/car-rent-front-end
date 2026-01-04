@@ -1,5 +1,5 @@
 import { useLoaderData, useRevalidator } from "react-router";
-import { Box, Btn, CardBrand, CardCar, FormCreateBrand, FormEditBrand, FormEditCar, Loading, Modal, Title } from "./components";
+import { Box, Btn, CardBrand, CardCar, FormCreateBrand, FormCreateCar, FormEditBrand, FormEditCar, Loading, Modal, Title } from "./components";
 import { useAlertMsg, useBrand, useCar } from "./hook";
 import Alert from "./components/alert.component";
 
@@ -8,7 +8,7 @@ export default function CarPage() {
     const { Brand, Car } = useLoaderData();
     const alert = useAlertMsg();
     const { brands, isReOder, brandEvent, isEditBrand, isCreateBrand, newBrand, editPosition } = useBrand(Brand);
-    const { cars, carEvent, positionEditCar, isReOderCar, isEditCar } = useCar(Car.data, alert.event);
+    const { cars, carEvent, positionEditCar, isReOderCar, isEditCar, isCreateCar } = useCar(Car.data, alert.event);
 
     const onOpenBrandEdit = (index) => { brandEvent.editBrand(index); }
     const onOpenBrandCreate = () => { brandEvent.createBrand(); }
@@ -114,7 +114,7 @@ export default function CarPage() {
                                 <Btn variant="ghost" size="small" onClick={onCancelOrderCar} >ยกเลิก</Btn>
                             </Box>
                         }
-                        <Btn variant="primary" onClick={onOpenBrandCreate}>เพิ่มรถใหม่</Btn>
+                        <Btn variant="primary" onClick={carEvent.create.open}>เพิ่มรถใหม่</Btn>
                     </Box>
                 </ToolBar>
                 <ListCar className="grid grid-cols-2 md:grid-cols-3">
@@ -136,6 +136,9 @@ export default function CarPage() {
                 </ListCar>
             </CarManager>
 
+            {
+                isCreateCar && <FormCreateCar onClose={carEvent.create.close} sendAlert={alert.event.sendAlert} />
+            }
             {isEditCar &&
                 <Modal>
                     <FormEditCar

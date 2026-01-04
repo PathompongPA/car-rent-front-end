@@ -29,7 +29,6 @@ export default function HistoryBookingPage() {
         return data.sort((a, b) => {
             let now = dayjs(a["createdAt"])
             let next = dayjs(b["createdAt"])
-            console.log(a["createdAt"], b["createdAt"])
             return now.isAfter(next) ? 1 : -1
         })
     }, [filter]);
@@ -92,7 +91,6 @@ export default function HistoryBookingPage() {
         link.click();
         document.body.removeChild(link);
     };
-    // console.log("booking : ", Booking)
 
     return (
         <div className="flex flex-col md:gap-4 w-full p-4 pt-20 h-[100vh] ">

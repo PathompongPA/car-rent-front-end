@@ -5,9 +5,9 @@ import { cn } from "../../../../utility";
 let modalVariant = cva(
     " fixed w-full h-full z-[50] bg-black/80 top-0 left-0 flex flex-col justify-center items-center duration-300 ",
 )
-export default function Modal({ children, className }) {
+export default function Modal({ children, className, onClose = () => { } }) {
     return (
-        <Box className={cn(modalVariant({ className }))}>
+        <Box className={cn(modalVariant({ className }))} onClick={(e) => { if (e.target !== e.currentTarget) return; onClose() }}>
             <Box >
                 <Box>{children}</Box>
             </Box>
