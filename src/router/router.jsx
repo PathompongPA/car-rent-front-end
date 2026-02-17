@@ -5,17 +5,17 @@ import { CarPage, CustomerPage, ErrorPage, HistoryBookingPage, OutOfPage } from 
 import { HomePage } from "../pages/frontEnd";
 import { fetchApi } from "../utility";
 
-async function loadFile(url) {
-    const res = await fetch(url);
-    const blob = await res.blob();
-    const fileName = url.split("/").pop();
-    const fileType = blob.type;
-    return new File([blob], fileName, { type: fileType });
-}
+// async function loadFile(url) {
+//     const res = await fetch(url);
+//     const blob = await res.blob();
+//     const fileName = url.split("/").pop();
+//     const fileType = blob.type;
+//     return new File([blob], fileName, { type: fileType });
+// }
 
-async function loadCarImages(urls) {
-    return await Promise.all(urls.map(async (url) => await loadFile(url)));
-}
+// async function loadCarImages(urls) {
+//     return await Promise.all(urls.map(async (url) => await loadFile(url)));
+// }
 
 async function adminLoader() {
     const [allBrand, brandRes, carRes, customer, booking, content, reviews] = await Promise.all([

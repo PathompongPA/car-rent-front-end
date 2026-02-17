@@ -6,7 +6,7 @@ export default function NavigationBar() {
 
     let handleBtnHamburgerMenu = () => setTimeout(() => { document.getElementsByClassName("navigation__menu")[0].classList.toggle("hidden") }, 75);
     return (
-        <div className="navigation >> flex justify-center fixed | top-0 z-50 w-full | md:border-b-4 md:border-golden-1 md:bg-white md:px-4 md:sticky " >
+        <div className="navigation >> flex justify-center sticky | top-0 z-50 w-full | md:border-b-4 md:border-golden-1 md:bg-white md:px-4 md:sticky " >
 
             <div className="navigation__container >> flex flex-col grow |  max-w-7xl  md:h-[60px] | md:border-0 md:items-center md:flex-row">
                 <div className="navigation__container-logo >>  flex grow justify-between items-center | pr-4 border-b-4 border-golden-1  | bg-white md:bg-none | md:bg-transparent md:border-b-0 ">
