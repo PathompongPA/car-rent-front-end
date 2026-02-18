@@ -72,7 +72,7 @@ export default function Brander() {
                     <img className="brander__image ... snap-center w-full  object-cover" src={image} alt="big image" key={image + _index} />
                 )}
             </div>
-            <CarFilter />
+            {/* <CarFilter /> */}
 
         </div >
     )

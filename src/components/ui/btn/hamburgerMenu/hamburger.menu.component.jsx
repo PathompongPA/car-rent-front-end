@@ -28,10 +28,10 @@ let style = {
     })
 }
 
-export default function BtnHamburgerMenu() {
-    const { isActive, on } = useHamburgerMenu();
+export default function BtnHamburgerMenu({ className, toggleMenu, isOpenMenu }) {
+    const { isActive, on } = useHamburgerMenu(isOpenMenu, toggleMenu);
     return (
-        <div className={style.hamburgerMenu({ isActive })} onClick={on.click}>
+        <div className={style.hamburgerMenu({ isActive, className })} onClick={on.click}>
             <div className={style.dash({ isActive })}></div>
             <div className={style.dash({ isActive })}></div>
             <div className={style.dash({ isActive })}></div>

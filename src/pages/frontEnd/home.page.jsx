@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { Outlet, useLocation } from "react-router"
-import { Brander, Footer, NavigationBar, QAndAComponent } from "../../components/frontEnd"
+import { Brander, Footer, QAndAComponent } from "../../components/frontEnd"
+import { NavigationBar } from "../../components/ui"
 
 export default function HomePage() {
     let location = useLocation()

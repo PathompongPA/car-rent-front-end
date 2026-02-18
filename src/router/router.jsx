@@ -1,9 +1,10 @@
 import { createHashRouter } from "react-router";
 import { Admin, FormBooking, FormContent, Loading } from "../components/admin";
-import { Calendar, Contact, DescriptionCar, Filter, Footer, GalleryCar, JourneyBooking, NavigationBar, Promotion, QAndAComponent, ResultCar, Review } from "../components/frontEnd";
+import { Calendar, Contact, DescriptionCar, Filter, Footer, GalleryCar, JourneyBooking, Promotion, QAndAComponent, ResultCar, Review } from "../components/frontEnd";
 import { CarPage, CustomerPage, ErrorPage, HistoryBookingPage, OutOfPage } from "../pages/admin";
 import { HomePage } from "../pages/frontEnd";
 import { fetchApi } from "../utility";
+import { NavigationBar } from "../components/ui";
 
 // async function loadFile(url) {
 //     const res = await fetch(url);
