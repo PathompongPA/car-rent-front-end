@@ -15,7 +15,7 @@ let style = {
         }
     }),
 
-    dash: cva("w-[32px] h-[5px]  rounded-2xl duration-300", {
+    dash: cva("w-[35px] h-[5px]  rounded-2xl duration-300", {
         variants: {
             isActive: {
                 true: "bg-white",

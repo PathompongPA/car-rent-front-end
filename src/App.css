@@ -58,7 +58,7 @@ html {
 
 @layer base {
   * {
-    @apply box-border font-ibm scroll-smooth touch-manipulation
+    @apply font-ibm scroll-smooth touch-manipulation
   }
 
   html {

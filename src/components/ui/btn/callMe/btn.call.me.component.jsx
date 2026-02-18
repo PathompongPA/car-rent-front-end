@@ -3,8 +3,8 @@ import useBtnCallMe from "./btn.call.me.hook";
 import { Icon, Option, Text } from "../../../materials";
 
 let style = {
-    container: cva(" fixed bottom-8 left-8 xl:static"),
-    btnCallMe: cva(" relative bg-blue-1 flex flex-row items-center gap-2 p-4 xl:p-4 rounded-4xl group xl:hover:cursor-pointer shadow-1   duration-300",
+    container: cva(" fixed bottom-4 left-4 xl:static"),
+    btnCallMe: cva(" relative bg-blue-1 flex flex-row items-center gap-2 p-4 xl:p-4 rounded-4xl group xl:hover:cursor-pointer shadow-3   duration-300",
         {
             variants: {
                 isActive: {
@@ -19,7 +19,7 @@ let style = {
         }
     ),
     icon: {
-        phone: cva("min-w-6 h-7 ",
+        phone: cva("min-w-6 min-h-6 ",
             {
                 variants: {
                     isActive: {
@@ -34,7 +34,7 @@ let style = {
             }
         ),
 
-        down: cva("max-w-0  xl:group-hover:max-w-6 h-8 overflow-hidden duration-600 rotate-180 xl:rotate-0 ",
+        down: cva("max-w-0  xl:group-hover:max-w-6 min-h-6 overflow-hidden duration-600 rotate-180 xl:rotate-0 ",
             {
                 variants: {
                     isActive: {
