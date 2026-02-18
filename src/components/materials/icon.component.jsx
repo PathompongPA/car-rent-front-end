@@ -1,12 +1,16 @@
 import { cva } from "class-variance-authority"
 
 let style = {
+    container: cva(" flex justify-center items-center overflow-hidden aspect-square", {}),
     icon: cva("fa-solid ", {
         variants: {
             variant: {
-                next: "fa-angle-left fa-fade",
+                next: "fa-angle-left",
                 car: "fa-car",
                 calendar: "fa-calendar",
+                phone: "fa-phone",
+                down: "fa-angle-down",
+                newTab: "fa-arrow-up-right-from-square"
             },
             size: {
                 s: "fa-sm",
@@ -20,6 +24,10 @@ let style = {
     }
     )
 }
-export default function Icon({ variant }) {
-    return <i className={style.icon({ variant })}></i>
+export default function Icon({ variant, size, className }) {
+    return (
+        <div className={style.container({ className })}>
+            <i className={style.icon({ variant, size })}></i>
+        </div>
+    )
 };

@@ -4,10 +4,12 @@ import Icon from "./icon.component";
 import Item from "./item.component";
 import List from "./list.component";
 import Logo from "./logo.component";
+import Option from "./option.component";
 import OverLay from "./overlay.component";
 import Text from "./text.component";
 
 export {
+    Option,
     Logo,
     Icon,
     Text,

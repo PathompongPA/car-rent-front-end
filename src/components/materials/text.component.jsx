@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority"
 
 let style = {
-    text: cva("", {
+    text: cva(" text-nowrap", {
         variants: {
             variant: {
                 title: "text-3xl",
