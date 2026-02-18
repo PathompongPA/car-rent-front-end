@@ -12,7 +12,7 @@ function useOption() {
 }
 
 let style = {
-    option: cva("absolute", {
+    option: cva("absolute overflow-hidden ease-out ", {
         variants: {
             variant: {
                 down: "top-full mt-0",
