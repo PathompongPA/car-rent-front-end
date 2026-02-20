@@ -12,7 +12,7 @@ export default function HomePage() {
     })
 
     let on = {
-        search: (newValue) => { console.log("on search :", filter); setFilter(newValue) }
+        search: (newValue) => { setFilter(newValue) }
     }
 
     useEffect(() => {

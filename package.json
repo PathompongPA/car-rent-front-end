@@ -18,10 +18,12 @@
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
     "gh-pages": "^6.3.0",
+    "i18next": "^25.8.11",
     "papaparse": "^5.5.3",
     "puppeteer": "^24.16.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-i18next": "^16.5.4",
     "react-router": "^7.6.2",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.8"

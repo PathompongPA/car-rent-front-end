@@ -15,14 +15,14 @@ let style = {
         }),
 
         icon: {
-            down: cva()
+            down: cva("data-[Open=true]:rotate-180")
         },
 
         title: cva(" font-bold"),
     },
 
     option: {
-        container: cva(" px-1 gap-1 bg-white text-blue-1 shadow-2 top-full mt-2 rounded-2xl flex flex-col w-full  duration-300 ", {
+        container: cva(" px-2 gap-1 bg-white text-blue-1 shadow-2 top-full mt-2 rounded-2xl flex flex-col w-full  duration-300 ", {
             variants: {
                 isOpen: {
                     true: " max-h-fit py-1 ",
@@ -47,19 +47,18 @@ let style = {
 
 }
 export default function BtnLanguage() {
-    const { isOpen, state, on } = useBtnLanguage();
+    const { isOpen, ui, on } = useBtnLanguage();
     return (
         <div className="">
             <button className={style.btnLanguage.container()} onClick={on.click.BtnLanguage}>
-                <Text className={style.btnLanguage.title()}>{state.lag}</Text>
-                <Icon variant={"down"} size={"m"} />
+                <Text className={style.btnLanguage.title()}>{ui.lag.toUpperCase()}</Text>
+                <Icon className={style.btnLanguage.icon.down()} variant={"down"} size={"m"} data-Open={isOpen} />
             </button>
             <Option className={style.option.container({ isOpen })}>
-                {state?.option?.map((item, key) => {
-                    let isActive = item?.lag === state.lag
-                    return <button className={style.option.item({ isActive, isOpen })} key={key}>{item?.lag}</button>
-                }
-                )}
+                {ui?.languages?.map((item, key) => {
+                    let isActive = item === ui.lag
+                    return <button className={style.option.item({ isActive, isOpen })} onClick={() => { on.select.language(item) }} key={key}>{item.toUpperCase()}</button>
+                })}
             </Option>
         </div>
     )

@@ -1,9 +1,11 @@
 import dayjs from "dayjs"
 import { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next";
 import { useLoaderData } from "react-router";
 
 export default function useCarFilter(onSearch) {
     const loader = useLoaderData();
+    const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(null)
     const [start, setStart] = useState(null)
     const [end, setEnd] = useState(null)
@@ -14,12 +16,12 @@ export default function useCarFilter(onSearch) {
         isOpenBrandPicker: isOpen === "brand",
         ui: {
             btn: {
-                brand: brands.length === loader?.Brand?.data?.length ? 'ยี่ห้อ' : brands.map(item => item.brandName).join(", "),
+                brand: brands.length === loader?.Brand?.data?.length ? t("filter.btn.pickup.brand") : brands.map(item => item.brandName).join(", "),
                 pickup: {
-                    start: start && start?.format("DD / MM / YYYY") || "วันรับรถ",
-                    end: end && end?.format("DD / MM / YYYY") || "วันคืนรถ",
+                    start: start && start?.format("DD / MM / YYYY") || t("filter.btn.pickup.start"),
+                    end: end && end?.format("DD / MM / YYYY") || t("filter.btn.pickup.end"),
                 },
-                search: "ค้นหา"
+                search: t("filter.btn.search")
             }
         },
         state: {

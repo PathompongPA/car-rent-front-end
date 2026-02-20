@@ -1,0 +1,68 @@
+{
+    "filter": {
+        "btn": {
+            "pickup": {
+                "brand": "Brand",
+                "start": "Pickup",
+                "end": "Return"
+            },
+            "search": "Search"
+        }
+    },
+    "picker": {
+        "calendar": {},
+        "brand": {
+            "title": "Select Brand",
+            "all": "all",
+            "confirm": "confirm"
+        }
+    },
+    "review": {
+        "form": "review from",
+        "review": "user",
+        "showMore": "show more"
+    },
+    "calendar": {
+        "title": "Calendar Booking",
+        "toDay": "To day",
+        "clear": "clear",
+        "month": {
+            "1": "January",
+            "2": "February",
+            "3": "March",
+            "4": "April",
+            "5": "May",
+            "6": "June",
+            "7": "July",
+            "8": "August",
+            "9": "September",
+            "10": "October",
+            "11": "November",
+            "12": "December"
+        },
+        "days": {
+            "1": "S",
+            "2": "M",
+            "3": "T",
+            "4": "W",
+            "5": "Th",
+            "6": "F",
+            "7": "St"
+        },
+        "year": 0,
+        "free": "Available",
+        "booked": "Booked"
+    },
+    "price": {
+        "title": "Promotion now",
+        "day": "day",
+        "bath": "bath"
+    },
+    "description": {
+        "title ": "description"
+    },
+    "footer": {
+        "address": "address",
+        "social": "follow us"
+    }
+}
