@@ -4,14 +4,14 @@ import { cva } from "class-variance-authority";
 import useNavigationBar from "./navbar.hook";
 
 let style = {
-    bar: cva(" border-b-4 border-amber-400 w-full h-fit sticky top-0 z-99 bg-white "),
-    container: cva(" h-full flex flex-row justify-between px-4 gap-8 items-center w-full md:max-w-7xl xl:px-0 relative"),
+    bar: cva(" border-b-4 border-amber-400 w-full h-fit sticky top-0 z-105 bg-white "),
+    container: cva(" h-full flex flex-row justify-between px-4 gap-8 items-center w-full  xl:px-8 relative"),
     logo: cva(""),
-    list: cva(" flex flex-col md:flex-row absolute h-screen gap-8 p-8 top-full left-0  bg-white/50 backdrop-blur-sm mt-1  w-full md:p-0 md:static md:h-fit md:gap-8 md:justify-end z-99", {
+    list: cva(" overflow-hidden duration-300 ease-out flex flex-col md:flex-row absolute h-screen gap-8 px-8 top-full left-0  bg-white/50 backdrop-blur-sm mt-1  w-full md:p-0 md:static md:h-fit md:gap-8 md:justify-end z-99", {
         variants: {
             isOpenMenu: {
-                true: "",
-                false: "hidden md:flex"
+                true: " max-h-screen py-8 ",
+                false: "max-h-0 md:max-h-fit"
             }
         },
         defaultVariants: {
@@ -34,8 +34,8 @@ export default function NavigationBar() {
                     {state?.navbar?.map((item, key) => <button className={style.menu()} onClick={() => on?.click?.menu(item?.link)} key={key}>{item?.text}</button>)}
                 </List>
                 <div className=" flex flex-row items-center justify-center gap-4 py-2">
-                    <BtnLanguage />
                     <BtnLine />
+                    <BtnLanguage />
                     <BtnCallMe />
                 </div>
             </div>

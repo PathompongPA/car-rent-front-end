@@ -8,7 +8,6 @@ let style = {
 }
 export default function BtnLine() {
     const { state } = useBtnLine();
-    console.log("btn line : ", state.line);
     return (
         <div className={style.container()}>
             <div className=" w-16 aspect-square flex justify-center items-center overflow-hidden rounded-full bg-white">

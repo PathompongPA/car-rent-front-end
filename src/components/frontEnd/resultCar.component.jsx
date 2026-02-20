@@ -1,4 +1,5 @@
 import { Link, useLoaderData, useSearchParams } from "react-router";
+import { Reveal } from "../materials";
 
 export default function ResultCar() {
     const [searchParam] = useSearchParams();
@@ -22,8 +23,9 @@ export default function ResultCar() {
         <div className="result-car >> flex flex-col  gap-4 flex-wrap justify-center  | min-w-[150px]  lg:min-h-[300px] w-full lg:gap-4  p-4 xl:px-0 md:py-4 | bg-linear-to-b from-white to-blue-2/10  | lg:max-w-7xl md:bg-white md:bg-none snap-start ">
             <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center  md:min-h-[200px] gap-4  w-full">
                 {cars?.map(({ carThumbnail, brand, carName, id }, index) =>
-                    <Link to={`/car/?id=${id}`} onClick={() => { window.scrollTo(0, 0) }}
-                        className="result-car__card --btn >> flex flex-col items-center |
+                    <Reveal key={index}>
+                        <Link to={`/car/?id=${id}`} onClick={() => { window.scrollTo(0, 0) }}
+                            className="result-car__card --btn >> flex flex-col items-center |
                                 bg-gray-1/40
                                 h-fit
                                 md:bg-transparent
@@ -37,10 +39,11 @@ export default function ResultCar() {
                                   relative
                                   *:duration-1000
                                    "
-                        key={`${id}+${index}`} >
-                        <img className="result-car__img >> aspect-3/2 bg-blue-2/80 object-cover | w-full rounded-lg | md:w-full brightness-90 group-hover:brightness-100 " src={carThumbnail} alt={`thumbnail-${brand.brandName}-${carName}`} />
-                        <h1 className="result-car__title >> absolute bottom-0 w-full text-white text-end text-2xl text-nowrap  overflow-ellipsis overflow-hidden font-thin | p-4">{`${brand.brandName} ${carName}`}</h1>
-                    </Link>
+                            key={`${id}+${index}`} >
+                            <img className="result-car__img >> aspect-3/2 bg-blue-2/80 object-cover | w-full rounded-lg | md:w-full brightness-90 group-hover:brightness-100 " src={carThumbnail} alt={`thumbnail-${brand.brandName}-${carName}`} />
+                            <h1 className="result-car__title >> absolute bottom-0 w-full text-white text-end text-2xl text-nowrap  overflow-ellipsis overflow-hidden font-thin | p-4">{`${brand.brandName} ${carName}`}</h1>
+                        </Link>
+                    </Reveal>
                 )}
             </div>
         </div>

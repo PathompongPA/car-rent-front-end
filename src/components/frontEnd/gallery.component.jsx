@@ -29,7 +29,7 @@ export default function GalleryCar() {
     }
 
     return (
-        <div id="gallery" className="gallery-car *** flex flex-col justify-center items-center | pt-17 | md:p-0 lg:max-w-7xl xl:min-w-7xl lg:snap-center ">
+        <div id="gallery" className="gallery-car *** flex flex-col justify-center items-center  | md:p-0 lg:max-w-7xl xl:min-w-7xl lg:snap-center ">
 
             <div className="gallery-car__container-title *** grid grid-cols-20 w-full items-center | px-4 | text-title-3 font-black text-blue-1  *:items-center *:flex *:not-[button]:justify-center *:h-12 *:md:h-full ">
                 <button className={`gallery-car__btn-pre --btn col-span-2 justify-start box-border  p-2  ${parameCarId === 0 && "invisible"}`} onClick={() => { setSearchParame({ "id": parameCarId > 0 ? Car.data[parameCarId - 1].id : Car.data[parameCarId].id }) }}>{`<`}</button>

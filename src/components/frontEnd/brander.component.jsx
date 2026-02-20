@@ -45,11 +45,10 @@ export default function Brander() {
     let isFristImage = index === 0
     let isOnlyOneImage = viewBoard?.length === 1
     return (
-        // <div className="brander ... relative items-start justify-center | w-full gap-4 | pt-16 xl:pt-0  md:max-w-7xl xl:w-full" >
-        <div className="brander ... relative items-start justify-center | w-full gap-4 | pt-16 xl:pt-0   xl:w-full" >
+        <div className="brander ... relative flex flex-col items-start justify-center | w-full gap-0 | xl:pt-0   xl:w-full" >
 
 
-            <div className="brander__interface ... flex flex-col justify-center absolute | w-full h-full top-0" >
+            {/* <div className="brander__interface ... flex flex-col justify-center absolute | w-full h-full top-0" >
 
                 <div className={`brander__next-and-pre ... absolute flex | h-fit w-full p-4 || *:absolute *:justify-center *:items-center *:rounded-full *:aspect-1/1 *:font-black  *:w-[10vw] *:md:w-[3vw] *:md:text-xl *:bg-white/80 *:text-black ${isOnlyOneImage && "hidden"}`} >
                     <div className={`brander__btn-pre-image --btn ... left-4 ${isFristImage ? "hidden" : "flex"}`} onClick={handleScrollPre} > {`<`} </div>
@@ -65,14 +64,14 @@ export default function Brander() {
                     })}
                 </div>
 
-            </div >
+            </div > */}
 
             <div className="brander__slide-image --scroll-hide ... flex flex-row snap-x snap-mandatory overflow-x-auto scroll md:overflow-x-auto overflow-y-hidden | w-full  ">
                 {viewBoard?.map((image, _index) =>
-                    <img className="brander__image ... snap-center w-full  object-cover" src={image} alt="big image" key={image + _index} />
+                    <img className="brander__image ... snap-center w-full  object-cover " src={image} alt="big image" key={image + _index} />
                 )}
             </div>
-            {/* <CarFilter /> */}
+            <CarFilter />
 
         </div >
     )

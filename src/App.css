@@ -49,7 +49,8 @@ html {
   --text-description-3: 20px;
   --color-gray-1: #C2C2C2;
   --color-golden-1: #D4903B;
-  --color-blue-1: #04185C;
+  /* --color-blue-1: #04185C; */
+  --color-blue-1: #001868;
   --color-blue-2: #16224B;
   --color-blue-3: #050326;
   --color-blue-3: #050326;
@@ -58,7 +59,7 @@ html {
 
 @layer base {
   * {
-    @apply font-ibm scroll-smooth touch-manipulation
+    @apply box-border font-ibm scroll-smooth touch-manipulation
   }
 
   html {
@@ -120,4 +121,17 @@ html {
   --shadow-1: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
   --shadow-2: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
   --shadow-3: 0px 0px 16px 0px rgba(0, 0, 0, 0.25);
+  --animate-fade: fade .6s ease-in-out;
+}
+
+@keyframes fade {
+  from {
+    /* transform: translateY(5rem); */
+    opacity: 0;
+  }
+
+  to {
+    /* transform: translateY(0); */
+    opacity: 1;
+  }
 }

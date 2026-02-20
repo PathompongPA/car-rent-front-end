@@ -15,9 +15,7 @@ let varaintSocials = (_title) => {
 export default function Footer() {
     let { Content } = useLoaderData()
     const { logo, address, socialMedia } = Content;
-    console.log(Content)
     let listSocialMedea = socialMedia?.map(({ type, link }) => <a className={` hover:scale-125 duration-300 ${varaintSocials(type)} `} href={link} target="_blank" ></a>)
-    console.log("social media : ", socialMedia)
     return (
         <div className="container-footer >> flex justify-center | w-full border-t-4 border-golden-1 ">
             <div className="footer >> flex  flex-col justify-center  items-center | p-4 | text-blue-1 | md:py-0 md:flex-row lg:w-7xl md:gap-16 *:*:h-full ">

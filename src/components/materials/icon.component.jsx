@@ -5,7 +5,8 @@ let style = {
     icon: cva("fa-solid ", {
         variants: {
             variant: {
-                next: "fa-angle-left",
+                pre: "fa-angle-left",
+                next: "fa-angle-right",
                 car: "fa-car",
                 calendar: "fa-calendar",
                 phone: "fa-phone",

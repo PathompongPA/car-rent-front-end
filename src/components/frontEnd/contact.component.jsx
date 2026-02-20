@@ -3,7 +3,6 @@ import { useLoaderData } from "react-router";
 export default function Contact() {
     let { Content } = useLoaderData();
     const { card, title } = Content.contact;
-    console.log(card)
     return (
         <div id="contact" className="contact >> flex flex-col justify-center items-center | w-full p-4 pt-24 | md:gap-8 lg:max-w-7xl lg:snap-center ">
             <h1 className="contact__title >> w-full | hidden text-center font-black text-title-1 text-blue-1 md:block">{title.text}</h1>

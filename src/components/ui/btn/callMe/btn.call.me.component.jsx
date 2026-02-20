@@ -70,7 +70,6 @@ let style = {
 }
 export default function BtnCallMe() {
     const { isActive, state, on } = useBtnCallMe();
-    console.log(state);
     return (
         <div className={style.container()}>
             <button className={style.btnCallMe({ isActive })} onClick={on.click.callMe}>
