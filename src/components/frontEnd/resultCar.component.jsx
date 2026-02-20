@@ -1,23 +1,38 @@
-import { Link, useLoaderData, useSearchParams } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import { Reveal } from "../materials";
+import { useEffect, useState } from "react";
+
+function genRangeDate(start, end) {
+    start = start === null ? end : start
+    let date = []
+    for (let index = 0; start?.add(index - 1, "day")?.isBefore(end); index++) {
+        date.push(start?.add(index, "day").format("YYYY-MM-DD"))
+    }
+    return date
+}
 
 export default function ResultCar({ filter }) {
-    const [searchParam] = useSearchParams();
-    let { Car } = useLoaderData()
+    const [cars, setCars] = useState(useLoaderData().Car.data)
+    let loader = useLoaderData()
 
-    let searchBrand = searchParam.get('brand')
-    let isHomePage = searchBrand === "all" | searchBrand === null
-    let cars = isHomePage ?
-        Car.data.filter((item) => {
-            let isCarNotHide = item.isDelete === false
-            return isCarNotHide
-        }) :
-        Car.data.filter((item) => {
-            let isBrandValid = item.brand.brandName === searchBrand
-            let isCarNotHide = item.isDelete === false
-            return isBrandValid && isCarNotHide
-        }
-        )
+    useEffect(() => {
+        filter?.brands === null ? setCars(loader?.Car.data.filter(item => item.isDelete === false)) :
+            setCars(
+                loader?.Car?.data?.filter((item) => {
+                    let day = genRangeDate(filter?.start, filter?.end)
+                    console.log(day);
+                    const bookedSet = new Set(item.bookedDates);
+                    let isHidden = item.isDelete === true
+                    let isSelectAllBrand = filter?.brands?.length === loader?.Brand?.data?.length
+                    let isBrandValid = filter?.brands?.map(item => item.id).includes(item?.brand.id) || isSelectAllBrand
+                    let isFree = day.filter(date => bookedSet.has(date)).length === 0
+                    return !isHidden & isFree & isBrandValid
+                })
+            )
+
+    }, [filter?.brands, filter?.end, filter?.start, loader?.Brand?.data?.length, loader?.Car?.data])
+
+
 
     return (
         <div className="result-car >> flex flex-col  gap-4 flex-wrap justify-center  | min-w-[150px]  lg:min-h-[300px] w-full lg:gap-4  p-4 xl:px-0 md:py-4 | bg-linear-to-b from-white to-blue-2/10  | lg:max-w-7xl md:bg-white md:bg-none snap-start ">

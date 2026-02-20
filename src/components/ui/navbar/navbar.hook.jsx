@@ -8,7 +8,12 @@ export default function useNavigationBar() {
 
     let on = {
         click: {
-            menu: (link) => { document.getElementById(link).scrollIntoView() },
+            menu: (link) => {
+                document.getElementById(link).scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                })
+            },
             logo: () => {
                 window.scrollTo({
                     top: 0,

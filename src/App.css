@@ -1,34 +1,23 @@
 @import "tailwindcss";
 
-html {
-  scroll-behavior: smooth;
-}
 
-/* กำหนดกับทุก scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
-  /* ความกว้าง */
   height: 8px;
-  /* ความสูง (เวลาเป็นแนวนอน) */
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: #b3b3b300;
-  /* ฟ้า (Tailwind blue-500) */
   border-radius: 9999px;
-  /* โค้ง */
 }
 
 ::-webkit-scrollbar-track {
   background-color: #ffffff00;
-  /* เทา (Tailwind gray-200) */
 }
 
-/* สำหรับ Firefox */
 * {
   scrollbar-width: thin;
   scrollbar-color: #b3b3b3 #ffffff00;
-  /* thumb track */
 }
 
 
@@ -59,7 +48,7 @@ html {
 
 @layer base {
   * {
-    @apply box-border font-ibm scroll-smooth touch-manipulation
+    @apply box-border font-ibm
   }
 
   html {

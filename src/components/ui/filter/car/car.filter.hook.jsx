@@ -39,6 +39,9 @@ export default function useCarFilter(onSearch) {
                     search: () => {
                         let filter = { brands, start, end }
                         onSearch(filter)
+                        document.getElementById(loader.Content.navbar[0].link).scrollIntoView({
+
+                        })
                     }
                 }
             },

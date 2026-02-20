@@ -15,8 +15,6 @@ export default function HomePage() {
         search: (newValue) => { console.log("on search :", filter); setFilter(newValue) }
     }
 
-    console.log(filter);
-
     useEffect(() => {
         if (location.pathname === "/") { document.title = "รถเช่าบ้านคุณบี 88" }
     }, [location])
@@ -26,10 +24,10 @@ export default function HomePage() {
             <NavigationBar />
             <Brander onSearch={on.search} />
             <Outlet />
-            <Filter />,
-            <ResultCar filter={filter} />,
-            <JourneyBooking />,
-            <Review />,
+            <Filter />
+            <ResultCar filter={filter} />
+            <JourneyBooking />
+            <Review />
             <Contact />
             <QAndAComponent />
             <Footer />

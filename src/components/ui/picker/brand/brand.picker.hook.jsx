@@ -20,7 +20,7 @@ export default function useBrandPicker(brands, returnFunc) {
             click: {
                 confirm: () => { returnFunc(select) },
                 brand: (newBrand) => {
-                    isAllBrand ? setSelect([newBrand]) : setSelect((state) => [...state, newBrand])
+                    isAllBrand ? setSelect([newBrand]) : select.some(item => item.id === newBrand.id) ? setSelect(select.filter(item => item.id !== newBrand.id)) : setSelect((state) => [...state, newBrand])
                 },
                 allBrand: () => { isAllBrand ? setSelect([]) : setSelect(loader?.Brand.data) }
             }
