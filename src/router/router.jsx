@@ -142,20 +142,6 @@ const router = createHashRouter([
         element: <HomePage />,
         errorElement: <ErrorPage />,
         loader: carLoader,
-        children: [
-            {
-                path: "",
-                element:
-                    [
-                        <Filter />,
-                        <ResultCar />,
-                        <JourneyBooking />,
-                        <Review />,
-                        <Contact />
-                    ],
-                loader: carLoader
-            },
-        ],
     },
     {
         path: "/car",

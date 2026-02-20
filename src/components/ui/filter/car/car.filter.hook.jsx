@@ -1,31 +1,54 @@
-import { useState } from "react"
+import dayjs from "dayjs"
+import { useEffect, useState } from "react"
+import { useLoaderData } from "react-router";
 
-export default function useCarFilter() {
-    const [isOpen, setIsOpen] = useState(false)
+export default function useCarFilter(onSearch) {
+    const loader = useLoaderData();
+    const [isOpen, setIsOpen] = useState(null)
     const [start, setStart] = useState(null)
     const [end, setEnd] = useState(null)
+    const [brands, setBrands] = useState(loader?.Brand.data)
 
     return {
-        isOpen,
+        isOpenCalendar: isOpen === "start" | isOpen === "end",
+        isOpenBrandPicker: isOpen === "brand",
+        ui: {
+            btn: {
+                brand: brands.length === loader?.Brand?.data?.length ? 'ยี่ห้อ' : brands.map(item => item.brandName).join(", "),
+                pickup: {
+                    start: start && start?.format("DD / MM / YYYY") || "วันรับรถ",
+                    end: end && end?.format("DD / MM / YYYY") || "วันคืนรถ",
+                },
+                search: "ค้นหา"
+            }
+        },
         state: {
-            start: start && start?.format("DD / MM / YYYY"),
-            end
+            brands,
+            calendar: {
+                start: isOpen === "start" ? dayjs() : isOpen === "end" && start || dayjs(),
+            }
         },
         on: {
             click: {
                 btn: {
                     pickup: {
-                        start: () => { setIsOpen(!isOpen) }
+                        start: () => { setIsOpen("start") },
+                        end: () => { setIsOpen("end") },
+                        brand: () => { setIsOpen("brand") },
+                    },
+                    search: () => {
+                        let filter = { brands, start, end }
+                        onSearch(filter)
                     }
                 }
             },
-            toggle: {
-                calendar: {
-                    pickup: (date) => { setIsOpen(!isOpen); setStart(date) }
-                }
+            select: {
+                brand: (newBrands) => { setIsOpen(null); setBrands(newBrands) },
+                date: (date) => { setIsOpen(null); isOpen === "start" ? setStart(date) : isOpen === "end" && setEnd(date) }
+
             },
             close: {
-                calendar: () => { setIsOpen(!isOpen) }
+                modal: () => { setIsOpen(null) }
             }
 
 

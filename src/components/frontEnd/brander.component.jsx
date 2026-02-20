@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import { CarFilter } from "../ui";
 
-export default function Brander() {
+export default function Brander({ onSearch }) {
     let { Content } = useLoaderData();
     const { viewBoard } = Content;
     let [index, setIndex] = useState(0)
@@ -71,8 +71,7 @@ export default function Brander() {
                     <img className="brander__image ... snap-center w-full  object-cover " src={image} alt="big image" key={image + _index} />
                 )}
             </div>
-            <CarFilter />
-
+            <CarFilter onSearch={onSearch} />
         </div >
     )
 };

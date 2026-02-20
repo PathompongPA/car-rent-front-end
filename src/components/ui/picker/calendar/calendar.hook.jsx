@@ -19,18 +19,19 @@ const genDayInWeek = () => {
     return weekDays;
 }
 
-export default function useCalendar(onSelect) {
-    const [now, setNow] = useState(dayjs())
+export default function useCalendarPicker(_start, onSelect) {
+    const [now, setNow] = useState(_start)
     const [days, setDays] = useState([])
-    const [date, setDate] = useState(now)
-    let start = dayjs()
+    const [date, setDate] = useState(null)
+    let start = _start || dayjs()
     let end = start.add(1, "year")
     let isPreMounthWithOutStart = now.add(-1, "month").isAfter(start.add(-1, "month"))
     let isNextMounthWithOutEnd = now.add(1, "month").isBefore(end)
 
     useEffect(() => {
         setDays(genDays(now))
-    }, [now])
+        setDate(start)
+    }, [now, start])
 
     return {
         isShowBtnPre: isPreMounthWithOutStart,

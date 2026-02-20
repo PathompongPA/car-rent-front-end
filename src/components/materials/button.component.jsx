@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority"
 
 let styleButton = cva(
-    " flex flex-row justify-center items-center font-bold hover:scale-95 hover:cursor-pointer duration-300 ease-out hover:brightness-90 active:scale-105 ",
+    " flex flex-row justify-center items-center font-bold hover:scale-95 hover:cursor-pointer duration-300 ease-out hover:brightness-90 active:scale-105  ",
     {
         variants: {
             variant: {
@@ -31,7 +31,7 @@ let styleButton = cva(
         }
     }
 )
-export default function Button({ children, className, variant, sharp, active, size, onClick }) {
-    return <button className={styleButton({ variant, sharp, active, size, className })} onClick={onClick}>{children}</button>
+export default function Button({ children, className, variant, sharp, active, size, onClick, ...prop }) {
+    return <button className={styleButton({ variant, sharp, active, size, className })} onClick={onClick} {...prop}>{children}</button>
 
 };

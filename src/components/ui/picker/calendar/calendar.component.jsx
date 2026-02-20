@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority"
-import useCalendar from "./calendar.hook";
-import { Icon, Text } from "../../materials";
+import { Icon, Text } from "../../../materials";
+import useCalendarPicker from "./calendar.hook";
 import dayjs from "dayjs";
 
 let style = {
@@ -40,7 +40,7 @@ let style = {
                     true: "text-blue-1/20 ",
                     false: ""
                 },
-                isBeforeNow: {
+                isBeforeStart: {
                     true: "text-blue-1/20",
                     false: ""
                 },
@@ -62,8 +62,8 @@ let style = {
     }
 }
 
-export default function Calendar({ onSelect }) {
-    const { state, on, isShowBtnPre, isShowBtnNext } = useCalendar(onSelect);
+export default function CalendarPicker({ onSelect, start }) {
+    const { state, on, isShowBtnPre, isShowBtnNext } = useCalendarPicker(start, onSelect);
     return (
         <div className={style.container()} data-border={"some"} data-state={"close"} >
             <div className={style.bar.container()} data-border={true}>
@@ -83,10 +83,10 @@ export default function Calendar({ onSelect }) {
             <div className={style.table.days()}>
                 {state?.table?.item?.map((item, key) => {
                     let isWithOutMonth = !item?.isSame(state.now, "month")
-                    let isBeforeNow = item?.isBefore(dayjs().add(-1, "day"))
+                    let isBeforeStart = item.isSame(dayjs(), "day") ? false : item?.isBefore(state.start.add(0, "day"))
                     let isSelect = item?.isSame(state.date, "day")
                     return (
-                        <button className={style.table.day({ isWithOutMonth, isBeforeNow, isSelect })} onClick={() => { (!isBeforeNow & !isWithOutMonth) && on.click.day(item) }} key={key}>{item?.format("D")}</button>
+                        <button className={style.table.day({ isWithOutMonth, isBeforeStart, isSelect })} onClick={() => { (!isBeforeStart & !isWithOutMonth) && on.click.day(item) }} key={key}>{item?.format("D")}</button>
                     )
                 }
                 )}
