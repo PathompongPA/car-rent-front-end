@@ -9,8 +9,10 @@ import Option from "./option.component";
 import OverLay from "./overlay.component";
 import Reveal from "./reveal.component";
 import Text from "./text.component";
+import Title from "./title.component";
 
 export {
+    Title,
     Modal,
     Reveal,
     Option,

@@ -4,7 +4,7 @@ import { Icon, Option, Text } from "../../../materials";
 
 let style = {
     container: cva(" fixed bottom-4 left-4 xl:static"),
-    btnCallMe: cva(" relative bg-blue-1 flex flex-row items-center gap-2 p-4 xl:p-4 rounded-4xl group xl:hover:cursor-pointer shadow-3   duration-300",
+    btnCallMe: cva(" relative bg-blue-1 flex flex-row items-center gap-2 p-4 xl:p-4 rounded-4xl group xl:hover:cursor-pointer shadow-3    duration-300",
         {
             variants: {
                 isActive: {
@@ -65,16 +65,16 @@ let style = {
             }
         }
     ),
-    item: cva(" text-start  xl:text-end font-bold text-nowrap text-blue-1")
+    item: cva(" text-start  xl:text-end font-bold text-nowrap text-blue-1  hover:text-shadow-amber-400")
 
 }
 export default function BtnCallMe() {
-    const { isActive, state, on } = useBtnCallMe();
+    const { isActive, state, on, ui } = useBtnCallMe();
     return (
         <div className={style.container()}>
             <button className={style.btnCallMe({ isActive })} onClick={on.click.callMe}>
                 <Icon className={style.icon.phone({ isActive })} variant={"phone"} size={"m"} />
-                <Text className={style.text({ isActive })}>โทรจอง</Text>
+                <Text className={style.text({ isActive })}>{ui.title}</Text>
                 <Icon className={style.icon.down({ isActive })} variant={"down"} size={"m"} />
                 <Option className={style.option({ isActive })} x={"end"}>
                     {state?.option?.map((item, key) =>

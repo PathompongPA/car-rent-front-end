@@ -1,10 +1,15 @@
 import Admin from "./admin.component";
-import FormBooking from "./formBooking.component";
-import FormBrandCar from "./formBrand.component";
-import FormCar from "./formCar.component";
-import FormContent from "./formContent.admin";
-import FormCustomer from "./formCustomer.component";
-import Loading from "./loading.component";
+import FormBooking from "./booking/formBooking.component";
+import FormBrandCar from "./car/formBrand.component";
+import FormCar from "./car/formCar.component";
+import FormContent from "./content/formContent.admin";
+import FormCustomer from "./customer/formCustomer.component";
+
 export {
-    Admin, FormBooking, FormBrandCar, FormCar, FormContent, FormCustomer, Loading,
+    FormContent,
+    Admin,
+    FormBooking,
+    FormBrandCar,
+    FormCar,
+    FormCustomer,
 };

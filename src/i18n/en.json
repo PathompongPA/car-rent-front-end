@@ -1,4 +1,7 @@
 {
+    "callMe": {
+        "title": "Call now"
+    },
     "filter": {
         "btn": {
             "pickup": {
@@ -55,14 +58,13 @@
     },
     "price": {
         "title": "Promotion now",
-        "day": "day",
-        "bath": "bath"
+        "day": "Day",
+        "bath": "THB"
     },
-    "description": {
-        "title ": "description"
-    },
+    "description": "Description",
     "footer": {
-        "address": "address",
-        "social": "follow us"
-    }
+        "address": "Address",
+        "social": "Follow us"
+    },
+    "all": "All"
 }

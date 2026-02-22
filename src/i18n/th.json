@@ -1,4 +1,7 @@
 {
+    "callMe": {
+        "title": "โทรจอง"
+    },
     "filter": {
         "btn": {
             "pickup": {
@@ -58,11 +61,10 @@
         "day": "วัน",
         "bath": "บาท"
     },
-    "description": {
-        "title ": "รายละเอียด"
-    },
+    "description": "รายละเอียด",
     "footer": {
         "address": "ที่อยู่",
         "social": "ติดตามเรา"
-    }
+    },
+    "all": "ทั้งหมด"
 }

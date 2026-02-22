@@ -1,7 +1,7 @@
 import { Outlet, useLoaderData } from "react-router";
 import { useEffect } from "react";
 import { LoginPage } from "../../pages/admin";
-import NavbarAdmin from "./navbar.admin..component";
+import NavbarAdmin from "./navbar/navbar.admin.component";
 
 export default function Admin() {
     const { Brand, Car, Customer } = useLoaderData()

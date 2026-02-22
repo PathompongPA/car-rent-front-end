@@ -32,6 +32,6 @@ let styleButton = cva(
     }
 )
 export default function Button({ children, className, variant, sharp, active, size, onClick, ...prop }) {
-    return <button className={styleButton({ variant, sharp, active, size, className })} onClick={onClick} {...prop}>{children}</button>
+    return <button className={styleButton({ variant, sharp, active, size, className })} onClick={(e) => { e.preventDefault(); onClick() }} {...prop}>{children}</button>
 
 };

@@ -43,7 +43,10 @@
   --color-blue-2: #16224B;
   --color-blue-3: #050326;
   --color-blue-3: #050326;
-  --color: var(--color-blue-1);
+  --color-bg-1: var(--color-gray-900);
+  --color-bg-2: var(--color-gray-800);
+  --color-bg-3: var(--color-gray-700);
+  --color-bg-4: var(--color-gray-600);
 }
 
 @layer base {

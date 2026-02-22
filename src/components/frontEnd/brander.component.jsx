@@ -3,8 +3,7 @@ import { useLoaderData } from "react-router";
 import { CarFilter } from "../ui";
 
 export default function Brander({ onSearch }) {
-    let { Content } = useLoaderData();
-    const { viewBoard } = Content;
+    let loader = useLoaderData();
     let [index, setIndex] = useState(0)
 
     useEffect(() => {
@@ -16,7 +15,7 @@ export default function Brander({ onSearch }) {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     function handleScrollNext() {
-        if (index === viewBoard.length - 1) {
+        if (index === loader?.viewBoard.length - 1) {
             setIndex(0)
             scroll(0)
         } else {
@@ -43,7 +42,7 @@ export default function Brander({ onSearch }) {
     }
 
     let isFristImage = index === 0
-    let isOnlyOneImage = viewBoard?.length === 1
+    let isOnlyOneImage = loader?.viewBoard?.length === 1
     return (
         <div className="brander ... relative flex flex-col items-start justify-center | w-full gap-0 | xl:pt-0   xl:w-full" >
 
@@ -67,7 +66,7 @@ export default function Brander({ onSearch }) {
             </div > */}
 
             <div className="brander__slide-image --scroll-hide ... flex flex-row snap-x snap-mandatory overflow-x-auto scroll md:overflow-x-auto overflow-y-hidden | w-full  ">
-                {viewBoard?.map((image, _index) =>
+                {loader?.viewBoard?.map((image, _index) =>
                     <img className="brander__image ... snap-center w-full  object-cover " src={image} alt="big image" key={image + _index} />
                 )}
             </div>

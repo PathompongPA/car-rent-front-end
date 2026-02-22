@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Link, useLoaderData, useSearchParams } from "react-router";
 
 export default function Filter() {
@@ -5,6 +6,7 @@ export default function Filter() {
     let searchBrand = searchParam.get('brand')
     let { Brand, Car } = useLoaderData()
     Brand = Brand?.data?.filter(brand => Car.data.some(car => car.brand.id === brand.id))
+    const { t } = useTranslation();
 
     // alert(document.getElementsByClassName("search-car__card")[0]?.clientWidth)
     function scroll(position) {
@@ -86,7 +88,7 @@ export default function Filter() {
             </div>
 
 
-            <Link to={`/?brand=all`} className={`search-car__btn-all --btn *** text-center ${searchBrand === "all" | searchBrand === null && "active"} >> py-3 px-8 w-[95%] md:w-[80%] lg:w-fit | text-blue-2 font-bold | rounded-lg | md:py-2.5 md:px-4 `} > ทั้งหมด</Link>
+            <Link to={`/?brand=all`} className={`search-car__btn-all --btn *** text-center ${searchBrand === "all" | searchBrand === null && "active"} >> py-3 px-8 w-[95%] md:w-[80%] lg:w-fit | text-blue-2 font-bold | rounded-lg | md:py-2.5 md:px-4 `} > {t("all")}</Link>
 
         </div>
 

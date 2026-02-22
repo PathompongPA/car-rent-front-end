@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useLoaderData } from "react-router";
 
 export default function useNavigationBar() {
-    const { Content } = useLoaderData();
-    const { navbar, logo } = Content;
+    const loader = useLoaderData();
     const [isOpenMenu, setIsOpenMenu] = useState(false)
 
     let on = {
@@ -25,7 +24,9 @@ export default function useNavigationBar() {
     }
     return {
         state: {
-            navbar, logo, isOpenMenu
+            navbar: loader?.navbar,
+            logo: loader?.logo,
+            isOpenMenu
         },
         on,
         isOpenMenu

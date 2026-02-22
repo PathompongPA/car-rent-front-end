@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
-import { fetchApi } from "../../utility";
-import CalendarAdmin from "./calendar.admin.component";
+import { fetchApi } from "../../../utility";
+import CalendarAdmin from "./calendar/calendar.admin.component";
 
 export default function FormBooking() {
     let { Car, Customer } = useLoaderData()

@@ -8,9 +8,9 @@ i18n
         {
             resources: {
                 en: { translation: en },
-                ไทย: { translation: th }
+                th: { translation: th }
             },
-            lng: "ไทย",
+            lng: "th",
             fallbackLng: "en",
             interpolation: {
                 escapeValue: false,

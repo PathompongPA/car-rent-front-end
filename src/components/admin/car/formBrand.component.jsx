@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { fetchApi } from "../../utility";
+import { fetchApi } from "../../../utility";
 
 export default function FormBrandCar({ index = "", data = { id: null, brandImg: null, brandName: null }, isCard = false }) {
     const navigate = useNavigate();

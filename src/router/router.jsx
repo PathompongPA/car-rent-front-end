@@ -1,40 +1,18 @@
 import { createHashRouter } from "react-router";
-import { Admin, FormBooking, FormContent, Loading } from "../components/admin";
+import { Admin, FormBooking, FormContent } from "../components/admin";
 import { Calendar, Contact, DescriptionCar, Filter, Footer, GalleryCar, JourneyBooking, Promotion, QAndAComponent, ResultCar, Review } from "../components/frontEnd";
 import { CarPage, CustomerPage, ErrorPage, HistoryBookingPage, OutOfPage } from "../pages/admin";
 import { HomePage } from "../pages/frontEnd";
 import { fetchApi } from "../utility";
-import { NavigationBar } from "../components/ui";
+import { Loading, NavigationBar } from "../components/ui";
 
-// async function loadFile(url) {
-//     const res = await fetch(url);
-//     const blob = await res.blob();
-//     const fileName = url.split("/").pop();
-//     const fileType = blob.type;
-//     return new File([blob], fileName, { type: fileType });
-// }
-
-// async function loadCarImages(urls) {
-//     return await Promise.all(urls.map(async (url) => await loadFile(url)));
-// }
+function getValueById(_rowData, _id) { return _rowData?.data?.filter(({ id }) => id === _id)[0].value }
 
 async function adminLoader() {
     const [allBrand, brandRes, carRes, customer, booking, content, reviews] = await Promise.all([
         fetchApi("GET", "/api/car/brand/all"),
         fetchApi("GET", "/api/car/brand/all"),
-        fetchApi("GET", "/api/car")
-        // .then(async res => (
-        //     {
-        //         isSuccess: true,
-        //         data: await Promise.all(res.data.map(async item => ({
-        //             ...item,
-        //             Imgs: await loadCarImages(item.Imgs),
-        //             carThumbnail: await Promise.resolve(loadFile(item.carThumbnail))
-        //         }))
-        //         )
-        //     }
-        // ))
-        ,
+        fetchApi("GET", "/api/car"),
         fetchApi("GET", "/api/customer/"),
         fetchApi("GET", "/api/booking"),
         fetchApi("GET", "/api/content"),
@@ -45,9 +23,16 @@ async function adminLoader() {
     const Car = await carRes
     const Customer = await customer
     const Booking = await booking
-    const Content = await content
     const Reviews = await reviews
-    return { Brand, Car, Customer, Booking, Content, Reviews, AllBrand }
+
+    let contents = undefined
+    try {
+        contents = content.data !== null ? JSON.parse(content.data.value) : undefined
+    } catch (error) {
+        console.log(error);
+
+    }
+    return { Brand, Car, Customer, Booking, contents, Reviews, AllBrand }
 }
 
 async function carLoader() {
@@ -72,27 +57,15 @@ async function carLoader() {
     const Customer = await customer
     const Booking = await booking
     const Reviews = await reviews
-    function getValueById(_rowData, _id) { return _rowData?.data?.filter(({ id }) => id === _id)[0].value }
-    let Content = {
-        logo: getValueById(content, "logo"),
-        navbar: getValueById(content, "navbar.title"),
-        viewBoard: getValueById(content, "viewBoard.image"),
-        journeyBooking: {
-            title: getValueById(content, "journeyBooking.title"),
-            card: getValueById(content, "journeyBooking.card"),
-        },
-        contact: {
-            title: getValueById(content, "contact.title"),
-            card: getValueById(content, "contact.card"),
-        },
-        question: {
-            title: getValueById(content, "Qa.title"),
-            card: getValueById(content, "Qa.card"),
-        },
-        address: getValueById(content, "footer.address"),
-        socialMedia: getValueById(content, "socialMedia")
+
+    let contents = undefined
+    try {
+        contents = content.data !== null ? JSON.parse(content.data.value) : undefined
+    } catch (error) {
+        console.log(error);
+
     }
-    return { Brand, Car, Customer, Booking, Reviews, AllBrand, Content }
+    return { Brand, Car, Customer, Booking, Reviews, AllBrand, contents }
 }
 
 const router = createHashRouter([
