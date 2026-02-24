@@ -9,7 +9,8 @@
                 "start": "Pickup",
                 "end": "Return"
             },
-            "search": "Search"
+            "search": "Search",
+            "clear": "clear"
         }
     },
     "picker": {
@@ -21,9 +22,11 @@
         }
     },
     "review": {
-        "form": "review from",
+        "title": "Review",
+        "form": "from",
         "review": "user",
-        "showMore": "show more"
+        "showMore": "show more",
+        "showLess": "show less"
     },
     "calendar": {
         "title": "Calendar Booking",
@@ -57,7 +60,7 @@
         "booked": "Booked"
     },
     "price": {
-        "title": "Promotion now",
+        "title": "Promotion",
         "day": "Day",
         "bath": "THB"
     },

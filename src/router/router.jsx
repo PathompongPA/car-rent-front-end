@@ -6,10 +6,8 @@ import { HomePage } from "../pages/frontEnd";
 import { fetchApi } from "../utility";
 import { Loading, NavigationBar } from "../components/ui";
 
-function getValueById(_rowData, _id) { return _rowData?.data?.filter(({ id }) => id === _id)[0].value }
-
 async function adminLoader() {
-    const [allBrand, brandRes, carRes, customer, booking, content, reviews] = await Promise.all([
+    const [allBrand, brandRes, carRes, customer, booking, content, reviews, viewBoard, Logo] = await Promise.all([
         fetchApi("GET", "/api/car/brand/all"),
         fetchApi("GET", "/api/car/brand/all"),
         fetchApi("GET", "/api/car"),
@@ -17,6 +15,8 @@ async function adminLoader() {
         fetchApi("GET", "/api/booking"),
         fetchApi("GET", "/api/content"),
         fetchApi("GET", "/api/reviews"),
+        fetchApi("GET", "/api/content/viewBoard"),
+        fetchApi("GET", "/api/content/logo"),
     ])
     const AllBrand = await allBrand
     const Brand = await brandRes
@@ -24,21 +24,24 @@ async function adminLoader() {
     const Customer = await customer
     const Booking = await booking
     const Reviews = await reviews
+    let viewBoards = await viewBoard.data.viewBoard
+    let logo = await Logo?.data?.logo
 
     let contents = undefined
     try {
         contents = content.data !== null ? JSON.parse(content.data.value) : undefined
-    } catch (error) {
-        console.log(error);
-
     }
-    return { Brand, Car, Customer, Booking, contents, Reviews, AllBrand }
+    catch (error) {
+        console.log(error);
+    }
+    console.log(contents);
+    return { Brand, Car, Customer, Booking, contents, Reviews, AllBrand, viewBoards, logo }
 }
 
 async function carLoader() {
-    const [allBrand, brandRes, carRes, customer, booking, content, reviews] = await Promise.all([
+    const [allBrand, brandRes, carRes, customer, booking, content, reviews, viewBoard, Logo] = await Promise.all([
         fetchApi("GET", "/api/car/brand/all"),
-        fetchApi("GET", "/api/car/brand/all"),
+        fetchApi("GET", "/api/car/brand"),
         fetchApi("GET", "/api/car")
             .then(res => {
                 return {
@@ -50,6 +53,8 @@ async function carLoader() {
         fetchApi("GET", "/api/booking"),
         fetchApi("GET", "/api/content"),
         fetchApi("GET", "/api/reviews"),
+        fetchApi("GET", "/api/content/viewBoard"),
+        fetchApi("GET", "/api/content/logo"),
     ])
     const AllBrand = await allBrand
     const Brand = await brandRes
@@ -57,7 +62,8 @@ async function carLoader() {
     const Customer = await customer
     const Booking = await booking
     const Reviews = await reviews
-
+    let viewBoards = await viewBoard.data.viewBoard
+    let logo = await Logo.data.logo
     let contents = undefined
     try {
         contents = content.data !== null ? JSON.parse(content.data.value) : undefined
@@ -65,7 +71,7 @@ async function carLoader() {
         console.log(error);
 
     }
-    return { Brand, Car, Customer, Booking, Reviews, AllBrand, contents }
+    return { Brand, Car, Customer, Booking, Reviews, AllBrand, contents, viewBoards, logo }
 }
 
 const router = createHashRouter([
@@ -115,6 +121,7 @@ const router = createHashRouter([
         element: <HomePage />,
         errorElement: <ErrorPage />,
         loader: carLoader,
+        hydrateFallbackElement: <Loading />
     },
     {
         path: "/car",

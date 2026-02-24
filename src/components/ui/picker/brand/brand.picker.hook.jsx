@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLoaderData } from "react-router";
 
@@ -8,6 +8,8 @@ export default function useBrandPicker(brands, returnFunc) {
     const [select, setSelect] = useState(brands)
     let isAllBrand = select.length === loader?.Brand?.data?.length
 
+    useEffect(() => { }, [brands])
+
     return {
         ui: {
             title: t("picker.brand.title"),
@@ -15,14 +17,18 @@ export default function useBrandPicker(brands, returnFunc) {
             all: t("picker.brand.all")
         },
         state: {
-            brands: loader?.Brand?.data,
-            select
+            brands: select,
+            allBrand: loader?.Brand?.data
         },
         on: {
             click: {
                 confirm: () => { returnFunc(select) },
                 brand: (newBrand) => {
-                    isAllBrand ? setSelect([newBrand]) : select.some(item => item.id === newBrand.id) ? setSelect(select.filter(item => item.id !== newBrand.id)) : setSelect((state) => [...state, newBrand])
+                    isAllBrand ?
+                        setSelect([newBrand])
+                        : select.some(item => item.id === newBrand.id)
+                            ? setSelect(select.filter(item => item.id !== newBrand.id))
+                            : setSelect((state) => [...state, newBrand])
                 },
                 allBrand: () => { isAllBrand ? setSelect([]) : setSelect(loader?.Brand.data) }
             }

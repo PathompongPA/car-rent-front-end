@@ -5,11 +5,12 @@
     "filter": {
         "btn": {
             "pickup": {
-                "brand": "ยี่ห้อ",
+                "brand": "ทุกยี่ห้อ",
                 "start": "วันรับรถ",
                 "end": "วันคืนรถ"
             },
-            "search": "ค้นหา"
+            "search": "ค้นหา",
+            "clear": "ล้าง"
         }
     },
     "picker": {
@@ -21,9 +22,11 @@
         }
     },
     "review": {
+        "title": "รีวิว",
         "form": "จากผู้ใช้งานกว่า",
-        "review": "review",
-        "showMore": "แสดงเพิ่มเติม"
+        "review": "คน",
+        "showMore": "แสดงเพิ่มเติม",
+        "showLess": "แสดงน้อยลง"
     },
     "calendar": {
         "title": "ปฎิทินการจอง",

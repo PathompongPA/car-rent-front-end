@@ -23,15 +23,16 @@ export default function BrandPicker({ brands, onSelect }) {
                 {ui.title}
             </h1>
             <div className={style.list.container()}>
-                {state?.brands?.map((item, key) => {
-                    let isSelect = state.select.includes(item)
+                <button className={style.list.all()} onClick={on.click.allBrand} data-select={condition.isAllBrand} >{ui.all}</button>
+                {state?.allBrand?.map((item, key) => {
+                    console.log(state.brands, state.allBrand);
+                    let isSelect = state.brands?.some(brand => brand.brandName === item.brandName)
                     return (
                         <button className={style.list.btn.container()} onClick={() => { on.click.brand(item) }} data-select={isSelect} key={key}>
                             <img className={style.list.btn.img()} src={item.brandImg} />
                         </button>
                     )
                 })}
-                <button className={style.list.all()} onClick={on.click.allBrand} data-select={condition.isAllBrand} >{ui.all}</button>
             </div>
             <button className={style.confirm()} onClick={on.click.confirm} >
                 {ui.confirm}

@@ -5,7 +5,7 @@ import { useLoaderData } from "react-router";
 export default function useFormAddress(onUpdate) {
     const { t, i18n } = useTranslation();
     const loader = useLoaderData();
-    const [address, setAddress] = useState(loader.contents.address || { th: { value: "" }, en: { value: "" } })
+    const [address, setAddress] = useState(loader?.contents?.address || { th: { value: "" }, en: { value: "" } })
     useEffect(() => {
         onUpdate(address)
         // eslint-disable-next-line react-hooks/exhaustive-deps

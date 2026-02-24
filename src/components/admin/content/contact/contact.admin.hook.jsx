@@ -5,12 +5,52 @@ import { useLoaderData } from "react-router";
 let defaultState = {
     contact: {
         th: {
-            title: "",
-            card: []
+            title: "ติดต่อเรา",
+            card: [
+                {
+                    title: "โทรศัพท์",
+                    list: [
+                        { link: "092-847-0991", text: "092-847-0991" },
+                        { link: "098-926-9669", text: "098-926-9669" },
+                    ]
+                },
+                {
+                    title: "facebook",
+                    list: [
+                        { link: "https://web.facebook.com/profile.php?id=61563865480190", text: "รถเช่า บ้านคุณบี88" },
+                    ]
+                },
+                {
+                    title: "line",
+                    list: [
+                        { link: "https://line.me/R/ti/p/@271xryvl?oat_content=url&ts=08110024", text: "@CARRENT88" },
+                    ]
+                },
+            ]
         },
         en: {
-            title: "",
-            card: []
+            title: "Contact Us",
+            card: [
+                {
+                    title: "Phone",
+                    list: [
+                        { link: "092-847-0991", text: "092-847-0991" },
+                        { link: "098-926-9669", text: "098-926-9669" },
+                    ]
+                },
+                {
+                    title: "facebook",
+                    list: [
+                        { link: "https://web.facebook.com/profile.php?id=61563865480190", text: "รถเช่า บ้านคุณบี88" },
+                    ]
+                },
+                {
+                    title: "line",
+                    list: [
+                        { link: "https://line.me/R/ti/p/@271xryvl?oat_content=url&ts=08110024", text: "@CARRENT88" },
+                    ]
+                },
+            ]
         }
     },
     card: {
@@ -24,13 +64,13 @@ let defaultState = {
 }
 export default function useFormContact(onUpdate) {
     const loader = useLoaderData();
-    const [contact, setContact] = useState(loader.contents.contact || defaultState.contact)
+    const [contact, setContact] = useState(loader?.contents?.contact || defaultState.contact)
     const { i18n } = useTranslation();
 
     useEffect(() => {
         onUpdate(contact)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [contact])
+    }, [contact, loader])
 
     return {
         ui: {
@@ -63,7 +103,7 @@ export default function useFormContact(onUpdate) {
                     link: (indexCard, indexDetailCardContent, newValue) => {
                         setContact((state) => {
                             let newState = { ...state }
-                            newState[i18n.language].card[indexCard].list[indexDetailCardContent].link= newValue
+                            newState[i18n.language].card[indexCard].list[indexDetailCardContent].link = newValue
                             return newState
                         })
                     },

@@ -78,7 +78,7 @@ export default function BtnCallMe() {
                 <Icon className={style.icon.down({ isActive })} variant={"down"} size={"m"} />
                 <Option className={style.option({ isActive })} x={"end"}>
                     {state?.option?.map((item, key) =>
-                        <a className={style.item()} key={key} target="_blank" href={`tel:${item?.link}`} >{`(${item?.text}) ${item?.link}`}</a>
+                        <a className={style.item()} key={key} target="_blank" href={`tel:${item?.link}`} >{`${item?.link}`}</a>
                     )}
                 </Option>
             </button>

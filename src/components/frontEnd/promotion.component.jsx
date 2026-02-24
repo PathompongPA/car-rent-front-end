@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLoaderData, useSearchParams } from "react-router";
+import { Reveal } from "../materials";
 
 export default function Promotion() {
     const [prices, setPrices] = useState([])
@@ -17,7 +18,9 @@ export default function Promotion() {
 
     return (
         <div className="promotion flex flex-col w-full text-description-1 font-black text-white bg-blue-2  p-4 md:px-4 md:py-8 md:snap-center">
-            <div className="promotion__title *** border-b-4 pb-8 text-golden-1 text-title-1 text-center">{t("price.title")}</div>
+            <Reveal>
+                <div className="promotion__title *** border-b-4 pb-8 text-golden-1 text-title-1 text-center">{t("price.title")}</div>
+            </Reveal>
             <div className="promotion_container-card *** flex flex-row flex-wrap items-center justify-center py-4 gap-x-8 md:py-8 md:gap-16">
                 {prices && prices.map(({ offerAmountDay, offerPrice }, index) =>
                     <button className="promotion__card --btn *** flex flex-col  items-center  gap-2 p-4 md:gap-2.5" key={index}>

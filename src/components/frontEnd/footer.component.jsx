@@ -16,12 +16,12 @@ let varaintSocials = (_title) => {
 export default function Footer() {
     let loader = useLoaderData()
     const { t, i18n } = useTranslation();
-    let listSocialMedea = loader?.Content?.socialMedia?.map(({ type, link }) => <a className={` hover:scale-125 duration-300 ${varaintSocials(type)} `} href={link} target="_blank" ></a>)
+    let listSocialMedea = loader?.contents?.socialMedia?.value.map(({ type, link }, index) => <a className={` hover:scale-125 duration-300 ${varaintSocials(type)} `} href={link} target="_blank" key={index} ></a>)
 
     return (
         <div className="container-footer >> flex justify-center | w-full border-t-4 border-golden-1 ">
             <div className="footer >> flex  flex-col justify-center  items-center | p-4 | text-blue-1 | md:py-0 md:flex-row lg:w-7xl md:gap-16 *:*:h-full ">
-                <img className="footer__logo >> w-full object-cover aspect-16/11 | md:w-[250px] " src={loader?.Content?.logo} alt="logo" />
+                <img className="footer__logo >> w-full object-cover aspect-16/11 | md:w-[250px] " src={loader?.logo} alt="logo" />
                 <div className="footer__contacts >> flex flex-col | p-4 gap-4 | md:gap-2 md:flex-1/3">
                     <p className="footer__title-contact >> text-center md:text-start text-description-3 font-bold ">{t("footer.address")}</p>
                     <p className=" indent-4 text-justify leading-snug px-8 md:px-1 ">

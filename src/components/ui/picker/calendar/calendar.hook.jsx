@@ -1,5 +1,6 @@
 import dayjs from "dayjs"
 import { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 
 const genDays = (now) => {
     let days = []
@@ -10,23 +11,18 @@ const genDays = (now) => {
     }
     return days
 }
-const genDayInWeek = () => {
-    const sunday = dayjs().startOf('week');
-    const weekDays = [];
-    for (let i = 0; i < 7; i++) {
-        weekDays.push(sunday.add(i, 'day').format("dd"))
-    }
-    return weekDays;
-}
 
-export default function useCalendarPicker(_start, onSelect) {
+export default function useCalendarPicker(_start, onSelect, _date) {
     const [now, setNow] = useState(_start)
     const [days, setDays] = useState([])
-    const [date, setDate] = useState(null)
+    const [date, setDate] = useState(_date)
     let start = _start || dayjs()
     let end = start.add(1, "year")
+
     let isPreMounthWithOutStart = now.add(-1, "month").isAfter(start.add(-1, "month"))
     let isNextMounthWithOutEnd = now.add(1, "month").isBefore(end)
+
+    const { t } = useTranslation();
 
     useEffect(() => {
         setDays(genDays(now))
@@ -41,16 +37,25 @@ export default function useCalendarPicker(_start, onSelect) {
             start,
             end,
             date,
-            title: now?.format("MMMM YYYY"),
-            select: date?.format("DD MMMM YYYY"),
-            preMonth: now?.add(-1, "month").format("MMMM"),
-            nextMonth: now?.add(1, "month").format("MMMM"),
+            title: `${t(`calendar.month.${now.get("month") + 1}`)}  ${now.get("year")}`,
+            select: ` ${date?.get("day")} ${t(`calendar.month.${date?.get("month") + 1}`)} ${date?.get("year")} `,
+            preMonth: ` ${t(`calendar.month.${now?.add(-1, "month").get("month") + 1}`)} `,
+            nextMonth: ` ${t(`calendar.month.${now?.add(1, "month").get("month") + 1}`)} `,
             btn: {
-                clearSelect: "ล้างวันที่",
-                selectToDay: "วันนี้"
+                clearSelect: t("calendar.clear"),
+                selectToDay: t("calendar.toDay")
             },
             table: {
-                heard: genDayInWeek(),
+                heard: [
+                    t("calendar.days.1"),
+                    t("calendar.days.2"),
+                    t("calendar.days.3"),
+                    t("calendar.days.4"),
+                    t("calendar.days.5"),
+                    t("calendar.days.6"),
+                    t("calendar.days.7"),
+
+                ],
                 item: days
             }
         },

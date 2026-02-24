@@ -20,7 +20,7 @@ export default function FormContent() {
     // const { Content } = useLoaderData();
     const { ui, on } = useFormContentAdmin()
     return (
-        <form className=" form-content p-4 pt-20 pb-16 w-full h-fit xl:w-[1070px] grid grid-cols-2 gap-4 border ">
+        <form className=" form-content p-4 pt-20 pb-16 w-full h-fit xl:w-[1070px] grid grid-cols-2 gap-4 ">
             <FormNavbar onUpdate={on.update.navbar} />
             <ViewBoard />
             <FormBookingStep onUpdate={on.update.stepBooking} />

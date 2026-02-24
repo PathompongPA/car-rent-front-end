@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { useLoaderData } from "react-router";
+
+
+let defaultValue = {
+    value: [
+        { type: "facebook", link: "https://www.facebook.com/profile.php?id=61563865480190" },
+        { type: "instagram", link: "https://www.instagram.com/carrent88_khunb/?igsh=eTZkemFrbzhjdTZi#" },
+        { type: "tiktok", link: "https://www.tiktok.com/@carrental_mr.b88?_r=1&_t=ZS-92QR1FCrSRV" },
+        { type: "youtube", link: "https://www.carrent88.com" },
+    ]
+}
 
 export default function useSocialMedia(onUpdate) {
     let types = ["facebook", "instagram", "line", "tiktok", "X", "youtube"]
     const loader = useLoaderData()
-    const { i18n } = useTranslation();
-    const [socialMedia, setSocialMedia] = useState(loader?.contents?.socialMedia || {
-        th: { value: [] },
-        en: { value: [] }
-    })
+    const [socialMedia, setSocialMedia] = useState(loader?.contents?.socialMedia || defaultValue)
 
     useEffect(() => {
         onUpdate(socialMedia)
@@ -19,7 +24,7 @@ export default function useSocialMedia(onUpdate) {
 
     return {
         state: {
-            list: socialMedia[i18n.language].value
+            list: socialMedia.value
 
         },
         ui: {
@@ -42,7 +47,7 @@ export default function useSocialMedia(onUpdate) {
                             (state) => {
                                 let newState = { ...state }
                                 console.log("new state : ", newState);
-                                newState[i18n.language].value.push({ type: null, link: null })
+                                newState.value.push({ type: null, link: null })
                                 return newState
                             }
                         )
@@ -51,7 +56,7 @@ export default function useSocialMedia(onUpdate) {
                         setSocialMedia(
                             (state) => {
                                 let newState = { ...state }
-                                newState[i18n.language].value.splice(index, 1)
+                                newState.value.splice(index, 1)
                                 return newState
                             }
                         )
@@ -63,7 +68,7 @@ export default function useSocialMedia(onUpdate) {
                     setSocialMedia(
                         (state) => {
                             let newState = { ...state }
-                            newState[i18n.language].value[index].type = newType
+                            newState.value[index].type = newType
                             return newState
                         }
                     )
@@ -72,7 +77,7 @@ export default function useSocialMedia(onUpdate) {
                     setSocialMedia(
                         (state) => {
                             let newState = { ...state }
-                            newState[i18n.language].value[index].link = newLink
+                            newState.value[index].link = newLink
                             return newState
                         }
                     )

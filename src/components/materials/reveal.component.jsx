@@ -23,20 +23,21 @@ function useReveal(options = { threshold: 0.2 }) {
 
 }
 
-let style = cva(
-    "", {
+let style = cva("p-0 m-0 ", {
     variants: {
         isInView: {
             false: " opacity-0 ",
             true: "animate-fade ",
+        },
+        style: {
         }
     }
 })
 
-export default function Reveal({ children, className }) {
+export default function Reveal({ children, className, ...props }) {
     const { ref, isInView } = useReveal();
     return (
-        <div ref={ref} className={style({ isInView, className })} >
+        <div ref={ref} className={style({ isInView, className })} {...props} >
             {children}
         </div>
     );

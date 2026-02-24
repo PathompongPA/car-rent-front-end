@@ -4,8 +4,8 @@ import { cva } from "class-variance-authority";
 import useNavigationBar from "./navbar.hook";
 
 let style = {
-    bar: cva(" border-b-4 border-amber-400 w-full h-fit sticky top-0 z-105 bg-white "),
-    container: cva(" h-full flex flex-row justify-between px-4 gap-8 items-center w-full  xl:px-8 relative"),
+    bar: cva(" border-b-4 border-amber-400 flex justify-center w-full h-fit sticky top-0 z-105 bg-white "),
+    container: cva(" h-full flex flex-row max-w-7xl justify-between px-4 gap-8 items-center w-full  xl:px-0 relative"),
     logo: cva(""),
     list: cva(" overflow-hidden duration-300 ease-out flex flex-col md:flex-row absolute h-screen gap-8 px-8 top-full left-0  bg-white/50 backdrop-blur-sm mt-1  w-full md:p-0 md:static md:h-fit md:gap-8 md:justify-end z-99", {
         variants: {

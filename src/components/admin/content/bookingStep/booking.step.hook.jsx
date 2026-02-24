@@ -5,35 +5,49 @@ import { useLoaderData } from "react-router";
 let defaultState = {
     stepBooking: {
         th: {
-            title: "",
+            title: "ขั้นตอนการจอง",
             card: [
                 {
-                    subTitle: "",
-                    list: []
+                    subTitle: "ขั้นตอนการจอง",
+                    list: [
+                        "เลือกรถรุ่นที่คุณสนใจ",
+                        "ระบุวันที่ต้องการใข้งาน",
+                        "โลเคชั่นที่ต้องการจัดส่ง",
+                        "โอนมัดจำจองรถ",
+                        "รับรถพร้อม ชำระค่าเช่าและเงินมัดจำเต็มจำนวน",
+                    ]
                 },
                 {
-                    subTitle: "",
-                    list: []
+                    subTitle: "เอกสารที่ต้องใช้",
+                    list: [
+                        "บัตรประชาชน",
+                        "ใบขับขี่",
+                        "ใบขับขี่สากล (ต่างชาติ)",
+                    ]
                 },
                 {
-                    subTitle: "",
-                    list: []
+                    subTitle: "ช่องทางการชำระเงิน",
+                    list: [
+                        "สแกน QR",
+                        "โอนบัญชีธนาคาร",
+                        "เงินสด",
+                    ]
                 },
             ]
         },
         en: {
-            title: "",
+            title: "How to book",
             card: [
                 {
-                    subtitle: "",
+                    subTitle: "Booking step",
                     list: []
                 },
                 {
-                    subtitle: "",
+                    subTitle: "Document",
                     list: []
                 },
                 {
-                    subtitle: "",
+                    subTitle: "Payment",
                     list: []
                 },
             ]
@@ -44,12 +58,13 @@ export default function useFormBookingStep(onUpdate) {
     const loader = useLoaderData();
     const { i18n } = useTranslation();
 
-    const [stepBooking, setStepBooking] = useState(loader.contents.stepBooking || defaultState.stepBooking)
+    const [stepBooking, setStepBooking] = useState(loader?.contents?.stepBooking || defaultState.stepBooking)
+    console.log(stepBooking);
 
     useEffect(() => {
         onUpdate(stepBooking)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [stepBooking])
+    }, [stepBooking, loader])
 
     return {
         ui: {
