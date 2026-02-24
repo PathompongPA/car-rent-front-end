@@ -5,13 +5,11 @@ import BtnLine from "./btn/line/btn.line.component";
 import CarFilter from "./filter/car/car.filter.component";
 import Loading from "./loader/loading.component";
 import NavigationBar from "./navbar/navbar.component";
-import BrandPicker from "./picker/brand/brand.picker.component";
-import CalendarPicker from "./picker/calendar/calendar.component";
+import CalendarPicker from "./filter/car/pickup/calendar/calendar.component";
 
 export {
     Loading,
     CalendarPicker,
-    BrandPicker,
     BtnLanguage,
     BtnLine,
     BtnCallMe,
