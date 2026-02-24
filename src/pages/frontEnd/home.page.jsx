@@ -12,7 +12,6 @@ export default function HomePage() {
         end: null
     })
 
-    console.log(filter);
     let on = {
         search: (newValue) => { setFilter(newValue) }
     }

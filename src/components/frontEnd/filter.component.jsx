@@ -1,18 +1,33 @@
 import { useTranslation } from "react-i18next";
 import { Link, useLoaderData } from "react-router";
 import { Button, Icon, Reveal } from "../materials";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Filter({ filter, onUpdate }) {
 
     useEffect(() => { }, [filter])
 
+    const box = useRef()
     let { Brand, Car } = useLoaderData()
     Brand = Brand?.data?.filter(brand => Car.data.some(car => car.brand.id === brand.id))
     const { t } = useTranslation();
     let isAllBrand = Brand?.length === filter?.brands?.length
     let on = {
         click: {
+            scroll: {
+                pre: () => {
+                    box.current.scrollTo({
+                        left: box.current.scrollLeft - 750,
+                        behavior: 'smooth'
+                    });
+                },
+                next: () => {
+                    box.current.scrollTo({
+                        left: box.current.scrollLeft + 750,
+                        behavior: 'smooth'
+                    });
+                }
+            },
             brand: (newBrand) => {
                 isAllBrand ?
                     onUpdate((state) => ({
@@ -55,10 +70,10 @@ export default function Filter({ filter, onUpdate }) {
             p-4
             pb-6
             lg:gap-4
-    lg:bg-gradient-to-t md:from-gray-1 md:to-white 
+            lg:bg-gradient-to-t md:from-gray-1 md:to-white 
             xl:justify-between
             lg:w-full
-             shadow-2
+             shadow-1
             lg:flex-row
             xl:max-w-7xl
             xl:min-w-7xl
@@ -89,22 +104,20 @@ export default function Filter({ filter, onUpdate }) {
                 px-8
                             "
                 >
-                    <div className={"search-car__container-logo --- hidden xl:block z-10 absolute left-0 top-1/2 -translate-y-1/2 *:rounded-lg *:fixed  *:top-1/2 *:-translate-y-1/2   *:h-[50px] *:w-[25px] *:bg-black/5 *:text-blue-1 *:font-black w-full  "}>
-                        <Button className={"left-1 bg-blue-1 *:min-h-[50px] "} >
+                    <div className={"search-car__container-logo --- hidden xl:block z-10 absolute left-0 top-1/2 -translate-y-1/2 *:rounded-2xl *:fixed  *:top-1/2 *:-translate-y-1/2   *:h-[45px] *:w-[40px] *:bg-black/5 *:text-white *:font-black w-full  "}>
+                        <Button className={"left-1 bg-blue-1 *:min-h-[50px] "} onClick={on.click.scroll.pre} >
                             <Icon variant={"pre"} />
                         </Button>
-                        <Button className={"right-1 *:min-h-[50px]"} >
+                        <Button className={"right-1 *:min-h-[50px]"} onClick={on.click.scroll.next} >
                             <Icon variant={"next"} />
                         </Button>
                     </div>
 
-                    <div className=" w-full h-full flex flex-row gap-2 xl:gap-0 relative overflow-x-scroll xl:overflow-hidden ">
+                    <div ref={box} className=" w-full h-full flex flex-row gap-2 xl:gap-8 p-1 relative overflow-x-scroll xl:overflow-hidden ">
                         {Brand?.map((item, index) => {
                             let isActive = filter.brands !== null ? filter.brands?.some(brand => brand.brandName === item.brandName) : true
-                            // console.log(filter.brands?.some(brand => brand.brandName === item.brandName));
-                            // console.log(filter);
                             return (
-                                <Link to={`/?brand=${item.brandName}`} className={"--btn shadow-1 xl:shadow-none data-[active=false]:opacity-25 relative group aspect-square w-[100px] p-1 xl:min-w-[150px] xl:px-4 rounded-2xl "} key={index} data-active={isActive} onClick={() => { on.click.brand(item) }} >
+                                <Link to={`/?brand=${item.brandName}`} className={"--btn   data-[active=false]:opacity-10 relative group aspect-square w-[100px] p-1 xl:min-w-[150px] xl:px-4 rounded-4xl "} key={index} data-active={isActive} onClick={() => { on.click.brand(item) }} >
                                     <img className="search-car__brand-image >> w-full  aspect-1/1 object-scale-down text-blue-2 | md:aspect-1/1 | md:object-scale-down | " src={item.brandImg} alt="" />
                                     <p className="search-car__brand-name  >> absolute bottom-2 w-full left-0 group-hover:text-golden-1 hidden | text-center font-bold text-blue-2 |  xl:block" data-active={isActive} >{item.brandName}</p>
                                 </Link>
