@@ -66,9 +66,9 @@ export default function Brander({ onSearch, filter }) {
 
             </div > */}
 
-            <div className="brander__slide-image --scroll-hide ... animate-fade flex flex-row snap-x snap-mandatory overflow-x-auto scroll md:overflow-x-auto overflow-y-hidden | w-full  ">
+            <div className="brander__slide-image --scroll-hide ... animate-fade flex flex-row snap-x snap-mandatory justify-center overflow-x-auto scroll md:overflow-x-auto overflow-y-hidden | w-full ">
                 {loader?.viewBoards?.map((image, _index) =>
-                    <img className="brander__image ... snap-center w-full  object-cover " src={image} alt="big image" key={image + _index} />
+                    <img className="brander__image ... snap-center w-full xl:min-h-[800px] xl:max-h-[1000px] object-cover md:min-w-[1280px] " src={image} alt="big image" key={image + _index} />
                 )}
             </div>
             <CarFilter onSearch={onSearch} filter={filter} />

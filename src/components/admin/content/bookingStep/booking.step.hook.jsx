@@ -59,7 +59,6 @@ export default function useFormBookingStep(onUpdate) {
     const { i18n } = useTranslation();
 
     const [stepBooking, setStepBooking] = useState(loader?.contents?.stepBooking || defaultState.stepBooking)
-    console.log(stepBooking);
 
     useEffect(() => {
         onUpdate(stepBooking)

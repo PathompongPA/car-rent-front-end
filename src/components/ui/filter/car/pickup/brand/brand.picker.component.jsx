@@ -25,7 +25,6 @@ export default function BrandPicker({ brands, onSelect }) {
             <div className={style.list.container()}>
                 <button className={style.list.all()} onClick={on.click.allBrand} data-select={condition.isAllBrand} >{ui.all}</button>
                 {state?.allBrand?.map((item, key) => {
-                    console.log(state.brands, state.allBrand);
                     let isSelect = state.brands?.some(brand => brand.brandName === item.brandName)
                     return (
                         <button className={style.list.btn.container()} onClick={() => { on.click.brand(item) }} data-select={isSelect} key={key}>

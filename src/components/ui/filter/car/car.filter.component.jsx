@@ -5,7 +5,7 @@ import BrandPicker from "./pickup/brand/brand.picker.component";
 import CalendarPicker from "./pickup/calendar/calendar.component";
 
 let style = {
-    container: cva("flex flex-col w-[calc(100%-2rem)] borderl bg-white m-4 p-4 rounded-4xl shadow-3 xl:flex-row gap-4 xl:px-8 xl:py-6 top-10 xl:items-end  text-blue-1 xl:w-fit xl:rounded-full xl:absolute select-none "),
+    container: cva("flex flex-col w-[calc(100%-2rem)] borderl bg-white m-4 p-4 rounded-4xl shadow-3 xl:flex-row gap-4 xl:px-8 xl:py-6 top-10 xl:items-end  text-blue-1 xl:w-fit xl:rounded-full xl:absolute select-none"),
     btn: {
         container: cva("p-4 shadow-2 flex flex-row justify-start items-center w-full data-[role=search]:bg-blue-1 data-[role=search]:text-white"),
         clear: cva(" border h-full")

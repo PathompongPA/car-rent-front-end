@@ -34,7 +34,6 @@ async function adminLoader() {
     catch (error) {
         console.log(error);
     }
-    console.log(contents);
     return { Brand, Car, Customer, Booking, contents, Reviews, AllBrand, viewBoards, logo }
 }
 
