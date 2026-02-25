@@ -69,6 +69,7 @@ export default function Filter({ filter, onUpdate }) {
             mx-4
             p-4
             pb-6
+            gap-4
             lg:gap-4
             lg:bg-gradient-to-t md:from-gray-1 md:to-white 
             xl:justify-between
@@ -101,7 +102,7 @@ export default function Filter({ filter, onUpdate }) {
                 xl:overflow-x-auto
                 lg:gap-4
                  relative
-                px-8
+                xl:px-8
                             "
                 >
                     <div className={"search-car__container-logo --- hidden xl:block z-10 absolute left-0 top-1/2 -translate-y-1/2 *:rounded-2xl *:fixed  *:top-1/2 *:-translate-y-1/2   *:h-[45px] *:w-[40px] *:bg-black/5 *:text-white *:font-black w-full  "}>
@@ -113,11 +114,11 @@ export default function Filter({ filter, onUpdate }) {
                         </Button>
                     </div>
 
-                    <div ref={box} className=" w-full h-full flex flex-row gap-2 xl:gap-8 p-1 relative overflow-x-scroll xl:overflow-hidden ">
+                    <div ref={box} className=" w-full h-fit xl:h-full flex flex-row gap-2  xl:gap-8 xl:p-1 relative overflow-x-scroll xl:overflow-hidden ">
                         {Brand?.map((item, index) => {
                             let isActive = filter.brands !== null ? filter.brands?.some(brand => brand.brandName === item.brandName) : true
                             return (
-                                <Link to={`/?brand=${item.brandName}`} className={"--btn   data-[active=false]:opacity-10 relative group aspect-square w-[100px] p-1 xl:min-w-[150px] xl:px-4 rounded-4xl "} key={index} data-active={isActive} onClick={() => { on.click.brand(item) }} >
+                                <Link to={`/?brand=${item.brandName}`} className={"--btn  data-[active=false]:opacity-10 relative group aspect-square w-[100px] h-[100px] xl:min-w-[150px] xl:px-4 xl:h-auto rounded-4xl "} key={index} data-active={isActive} onClick={() => { on.click.brand(item) }} >
                                     <img className="search-car__brand-image >> w-full  aspect-1/1 object-scale-down text-blue-2 | md:aspect-1/1 | md:object-scale-down | " src={item.brandImg} alt="" />
                                     <p className="search-car__brand-name  >> absolute bottom-2 w-full left-0 group-hover:text-golden-1 hidden | text-center font-bold text-blue-2 |  xl:block" data-active={isActive} >{item.brandName}</p>
                                 </Link>
