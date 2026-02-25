@@ -53,7 +53,7 @@ let style = {
 
     option: cva(
         [
-            "z-200 shadow-2 bg-white w-fit h-fit flex flex-col overflow-hidden duration-600  rounded-4xl mt-2 gap-4 px-8 bottom-full mb-4 left-0 ",
+            "z-200 shadow-2 bg-white w-fit h-fit flex flex-col overflow-hidden duration-600  rounded-4xl mt-2 gap-4 px-8 bottom-full mb-2 left-0 ",
             "xl:top-full xl:mt-2 xl:left-auto xl:right-0 "
         ],
         {
