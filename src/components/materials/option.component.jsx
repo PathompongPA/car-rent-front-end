@@ -12,7 +12,7 @@ function useOption() {
 }
 
 let style = {
-    option: cva("absolute duration-300 overflow-hidden ease-out z-100 ", {
+    option: cva("absolute duration-300 overflow-hidden ease-out", {
         variants: {
             variant: {
                 down: "top-full mt-0",

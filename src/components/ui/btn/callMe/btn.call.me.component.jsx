@@ -3,7 +3,7 @@ import useBtnCallMe from "./btn.call.me.hook";
 import { Icon, Option, Text } from "../../../materials";
 
 let style = {
-    container: cva(" fixed bottom-4 left-4 xl:static"),
+    container: cva(" fixed bottom-4 left-4 xl:static z-110"),
     btnCallMe: cva(" relative bg-blue-1 flex flex-row items-center gap-2 p-4 xl:p-4 rounded-4xl group xl:hover:cursor-pointer shadow-3    duration-300",
         {
             variants: {
@@ -51,7 +51,11 @@ let style = {
     },
     text: cva("font-bold text-xl xl:text-base"),
 
-    option: cva(" shadow-2 bg-white w-fit h-fit flex flex-col overflow-hidden duration-600  rounded-4xl mt-2 gap-4 px-8 bottom-full mb-4 left-0 xl:top-full xl:mt-2 xl:left-auto xl:right-0",
+    option: cva(
+        [
+            "z-200 shadow-2 bg-white w-fit h-fit flex flex-col overflow-hidden duration-600  rounded-4xl mt-2 gap-4 px-8 bottom-full mb-4 left-0 ",
+            "xl:top-full xl:mt-2 xl:left-auto xl:right-0 "
+        ],
         {
             variants: {
                 isActive: {
