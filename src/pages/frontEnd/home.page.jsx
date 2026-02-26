@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Outlet, useLoaderData, useLocation } from "react-router"
-import { Brander, Contact, Filter, Footer, JourneyBooking, QAndAComponent, ResultCar, Review } from "../../components/frontEnd"
+import { BrandCarFilter, Brander, Contact, Footer, JourneyBooking, QAndAComponent, ResultCar, Review } from "../../components/frontEnd"
 import { NavigationBar } from "../../components/ui"
 
 export default function HomePage() {
@@ -25,7 +25,7 @@ export default function HomePage() {
             <NavigationBar />
             <Brander onSearch={on.search} filter={filter} />
             <Outlet />
-            <Filter filter={filter} onUpdate={on.search} />
+            <BrandCarFilter filter={filter} onUpdate={on.search} />
             <ResultCar filter={filter} />
             <JourneyBooking />
             <Review />

@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router";
 import { Button, Icon, Reveal } from "../materials";
 import { useEffect, useRef } from "react";
 
-export default function Filter({ filter, onUpdate }) {
+export default function BrandCarFilter({ filter, onUpdate }) {
 
     useEffect(() => { }, [filter])
 
