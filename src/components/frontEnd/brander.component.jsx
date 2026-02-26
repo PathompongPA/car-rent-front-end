@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
-import { CarFilter } from "../ui";
+import { CarSearch } from "../ui";
 import { Reveal } from "../materials";
 
 export default function Brander({ onSearch, filter }) {
@@ -71,7 +71,7 @@ export default function Brander({ onSearch, filter }) {
                     <img className="brander__image ... snap-center w-full xl:min-h-[800px] xl:max-h-[1000px] object-cover md:min-w-[1280px] " src={image} alt="big image" key={image + _index} />
                 )}
             </div>
-            <CarFilter onSearch={onSearch} filter={filter} />
+            <CarSearch onSearch={onSearch} filter={filter} />
         </div >
     )
 };

@@ -13,7 +13,7 @@ let style = {
     modal: cva("")
 }
 
-export default function CarFilter({ onSearch, filter }) {
+export default function CarSearch({ onSearch, filter }) {
     const { state, isOpenBrandPicker, isOpenCalendar, calendarMode, on, ui } = useCarFilter(onSearch, filter);
     return (
         <div className={style.container()} left={"center"} >
