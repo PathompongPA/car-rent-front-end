@@ -126,6 +126,7 @@ const router = createHashRouter([
     {
         path: "/car",
         loader: carLoader,
+        hydrateFallbackElement: <Loading />,
         element:
             <div className="flex flex-col justify-center items-center w-full ">
                 <NavigationBar />
