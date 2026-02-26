@@ -139,7 +139,7 @@ const router = createHashRouter([
                 <Review />
                 <QAndAComponent />
                 <Footer />
-            </div>,
+            </div>
 
     },
     {
