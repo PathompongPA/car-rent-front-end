@@ -1,60 +1,9 @@
-import { useTranslation } from "react-i18next";
-import { Link, useLoaderData } from "react-router";
+import { Link } from "react-router";
 import { Button, Icon, Reveal } from "../materials";
-import { useEffect, useRef } from "react";
+import useBrandCarFilter from "./filter.brand.car.hook";
 
 export default function BrandCarFilter({ filter, onUpdate }) {
-
-    useEffect(() => { }, [filter])
-
-    const box = useRef()
-    let { Brand, Car } = useLoaderData()
-    Brand = Brand?.data?.filter(brand => Car.data.some(car => car.brand.id === brand.id))
-    const { t } = useTranslation();
-    let isAllBrand = Brand?.length === filter?.brands?.length
-    let on = {
-        click: {
-            scroll: {
-                pre: () => {
-                    box.current.scrollTo({
-                        left: box.current.scrollLeft - 750,
-                        behavior: 'smooth'
-                    });
-                },
-                next: () => {
-                    box.current.scrollTo({
-                        left: box.current.scrollLeft + 750,
-                        behavior: 'smooth'
-                    });
-                }
-            },
-            brand: (newBrand) => {
-                isAllBrand ?
-                    onUpdate((state) => ({
-                        ...state,
-                        brands: [newBrand]
-                    })
-                    )
-                    : filter.brands.some(item => item.id === newBrand.id)
-                        ? onUpdate(
-                            (state) => ({
-                                ...state,
-                                brands: state.brands.filter(item => item.id !== newBrand.id)
-                            })
-                        )
-                        : onUpdate(
-                            (state) => ({
-                                ...state,
-                                brands: [...state.brands, newBrand]
-                            })
-                        )
-            },
-            allBrand: () => {
-                isAllBrand ? onUpdate((state) => ({ ...state, brands: [] })) : onUpdate((state) => ({ ...state, brands: Brand }))
-            }
-        }
-    }
-
+    const { ui, state, on, ref } = useBrandCarFilter(filter, onUpdate)
     return (
         <Reveal className={"w-full"}>
             <div
@@ -114,8 +63,8 @@ export default function BrandCarFilter({ filter, onUpdate }) {
                         </Button>
                     </div>
 
-                    <div ref={box} className=" w-full h-fit xl:h-full flex flex-row gap-2  xl:gap-8 xl:p-1 relative overflow-x-scroll xl:overflow-hidden ">
-                        {Brand?.map((item, index) => {
+                    <div ref={ref.box} className=" w-full h-fit xl:h-full flex flex-row gap-2  xl:gap-8 xl:p-1 relative overflow-x-scroll xl:overflow-hidden ">
+                        {state?.Brand?.map((item, index) => {
                             let isActive = filter.brands !== null ? filter.brands?.some(brand => brand.brandName === item.brandName) : true
                             return (
                                 <Link to={`/?brand=${item.brandName}`} className={"--btn  data-[active=false]:opacity-10 relative group aspect-square w-[100px] h-[100px] xl:min-w-[150px] xl:px-4 xl:h-auto rounded-4xl "} key={index} data-active={isActive} onClick={() => { on.click.brand(item) }} >
@@ -129,7 +78,7 @@ export default function BrandCarFilter({ filter, onUpdate }) {
                 </div>
 
 
-                <Link to={`/?brand=all`} className={`search-car__btn-all --btn ***  text-center data-[active=true]:bg-blue-1 data-[active=true]:text-white  py-4 px-8 w-full  lg:w-fit | text-blue-2 font-bold | rounded-3xl | md:py-2.5 md:px-4 `} data-active={isAllBrand} onClick={on.click.allBrand} > {t("all")}</Link>
+                <Link to={`/?brand=all`} className={`search-car__btn-all --btn ***  text-center data-[active=true]:bg-blue-1 data-[active=true]:text-white  py-4 px-8 w-full  lg:w-fit | text-blue-2 font-bold | rounded-3xl | md:py-2.5 md:px-4 `} data-active={state.isAllBrand} onClick={on.click.allBrand} >{ui.btn.all}</Link>
 
             </div>
         </Reveal>
