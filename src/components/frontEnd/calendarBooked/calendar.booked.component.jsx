@@ -27,7 +27,7 @@ export default function CalendarBooked() {
                             let isOutOfMonth = state.calendarNow.format("MM") !== day.format("MM")
                             let Day = Number(day.format("DD"))
                             return (
-                                <div className={style.itemBodyTable()} data-today={isToday} data-booked={isBooked} data-inMonth={isOutOfMonth} key={day}>
+                                <div className={style.itemBodyTable()} data-is-to-day={isToday} data-is-booked={isBooked} data-is-in-month={isOutOfMonth} key={day}>
                                     <div className={style.titleItemBodyTable()} > {Day} </div>
                                     <div className={style.statusItemBodyTable()}>{isBooked ? ui.booked : ui.free}</div>
                                 </div>

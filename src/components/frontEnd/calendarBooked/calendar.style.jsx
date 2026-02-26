@@ -4,7 +4,7 @@ let btn = cva(" cursor-pointer hover:text-blue-1/50 active:scale-95 active:text-
 let btnToDay = cva([btn, " text-base md:text-2xl h-fit rounded-full  py-2 text-white bg-blue-1 "])()
 let btnHeader = cva([btn, "text-sm font-medium md:text-description-1 text-nowrap"])()
 let labelHeader = cva("text-center text-2xl font-black md:text-title-2")()
-let status = cva(" bg-green-700 data-[today=true]:text-golden-1 data-[booked=true]:bg-red-700 data-[inMonth=true]:invisible")()
+let status = cva(" bg-green-700 data-[is-to-day=true]:text-golden-1 data-[is-booked=true]:bg-red-700 data-[is-in-month=true]:invisible")()
 
 let style = {
     calendar: cva(
