@@ -1,3 +1,3 @@
-export default function CarPage() {
+export default function CarPageClient() {
     return <div className=""></div>
 };

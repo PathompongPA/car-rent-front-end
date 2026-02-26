@@ -1,7 +1,7 @@
-import CarPage from "./car.page"
+import CarPageClient from "./car.page"
 import HomePage from "./home.page"
 
 export {
-    CarPage,
-    HomePage
+    HomePage,
+    CarPageClient
 }
