@@ -1,5 +1,5 @@
 import Brander from "./brander.component"
-import Calendar from "./calendar.component"
+import CalendarBooked from "./calendar.booked.component"
 import Contact from "./contact.component"
 import DescriptionCar from "./descriptionCar.component"
 import Filter from "./filter.component"
@@ -20,7 +20,7 @@ export {
     QAndAComponent,
     Footer,
     GalleryCar,
-    Calendar,
+    CalendarBooked as Calendar,
     Promotion,
     DescriptionCar,
     Filter

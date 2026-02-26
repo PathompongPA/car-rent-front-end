@@ -1,10 +1,11 @@
 import { createHashRouter } from "react-router";
 import { Admin, FormBooking, FormContent } from "../components/admin";
-import { Calendar, Contact, DescriptionCar, Filter, Footer, GalleryCar, JourneyBooking, Promotion, QAndAComponent, ResultCar, Review } from "../components/frontEnd";
+import { Contact, DescriptionCar, Footer, GalleryCar, JourneyBooking, Promotion, QAndAComponent, Review } from "../components/frontEnd";
 import { CarPage, CustomerPage, ErrorPage, HistoryBookingPage, OutOfPage } from "../pages/admin";
 import { HomePage } from "../pages/frontEnd";
 import { fetchApi } from "../utility";
 import { Loading, NavigationBar } from "../components/ui";
+import CalendarBooked from "../components/frontEnd/calendar.booked.component";
 
 async function adminLoader() {
     const [allBrand, brandRes, carRes, customer, booking, content, reviews, viewBoard, Logo] = await Promise.all([
@@ -129,7 +130,7 @@ const router = createHashRouter([
             <div className="flex flex-col justify-center items-center w-full ">
                 <NavigationBar />
                 <GalleryCar />
-                <Calendar />
+                <CalendarBooked />
                 <Promotion />
                 <DescriptionCar />
                 <Contact />

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useLoaderData, useSearchParams } from "react-router";
 import { Reveal } from "../materials";
 
-export default function Calendar() {
+export default function CalendarBooked() {
     const [arrayDay, setArrayDay] = useState(genArrayDay(dayjs()))
     const [calendarNow, setCalendarNow] = useState(dayjs())
     const [toDay, setToDay] = useState(dayjs().format("YYYY-MM-DD"))
