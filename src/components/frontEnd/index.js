@@ -1,5 +1,5 @@
 import Brander from "./brander.component"
-import CalendarBooked from "./calendar.booked.component"
+import CalendarBooked from "./calendarBooked/calendar.booked.component"
 import Contact from "./contact.component"
 import DescriptionCar from "./descriptionCar.component"
 import BrandCarFilter from "./filter.brand.car.component"

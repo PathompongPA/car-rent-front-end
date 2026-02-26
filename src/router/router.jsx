@@ -5,7 +5,7 @@ import { CarPage, CustomerPage, ErrorPage, HistoryBookingPage, OutOfPage } from 
 import { HomePage } from "../pages/frontEnd";
 import { fetchApi } from "../utility";
 import { Loading, NavigationBar } from "../components/ui";
-import CalendarBooked from "../components/frontEnd/calendar.booked.component";
+import CalendarBooked from "../components/frontEnd/calendarBooked/calendar.booked.component";
 
 async function adminLoader() {
     const [allBrand, brandRes, carRes, customer, booking, content, reviews, viewBoard, Logo] = await Promise.all([
