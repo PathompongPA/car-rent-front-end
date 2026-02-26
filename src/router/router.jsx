@@ -1,11 +1,9 @@
 import { createHashRouter } from "react-router";
 import { Admin, FormBooking, FormContent } from "../components/admin";
-import { Contact, DescriptionCar, Footer, GalleryCar, JourneyBooking, Promotion, QAndAComponent, Review } from "../components/frontEnd";
 import { CarPage, CustomerPage, ErrorPage, HistoryBookingPage, OutOfPage } from "../pages/admin";
-import { HomePage } from "../pages/frontEnd";
+import { CarPageClient, HomePage } from "../pages/frontEnd";
 import { fetchApi } from "../utility";
-import { Loading, NavigationBar } from "../components/ui";
-import CalendarBooked from "../components/frontEnd/calendarBooked/calendar.booked.component";
+import { Loading } from "../components/ui";
 
 async function adminLoader() {
     const [allBrand, brandRes, carRes, customer, booking, content, reviews, viewBoard, Logo] = await Promise.all([
@@ -127,19 +125,7 @@ const router = createHashRouter([
         path: "/car",
         loader: carLoader,
         hydrateFallbackElement: <Loading />,
-        element:
-            <div className="flex flex-col justify-center items-center w-full ">
-                <NavigationBar />
-                <GalleryCar />
-                <CalendarBooked />
-                <Promotion />
-                <DescriptionCar />
-                <Contact />
-                <JourneyBooking />
-                <Review />
-                <QAndAComponent />
-                <Footer />
-            </div>
+        element: <CarPageClient />
 
     },
     {
