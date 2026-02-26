@@ -1,8 +1,8 @@
 import { cva } from "class-variance-authority";
 import { Button, Icon, Modal, Text } from "../../../materials";
-import useCarFilter from "./car.filter.hook";
 import BrandPicker from "./pickup/brand/brand.picker.component";
 import CalendarPicker from "./pickup/calendar/calendar.component";
+import useCarSearch from "./car.search.hook";
 
 let style = {
     container: cva("flex flex-col w-[calc(100%-2rem)] borderl bg-white m-4 p-4 rounded-4xl shadow-3 xl:flex-row gap-4 xl:px-8 xl:py-6 top-8 xl:items-end  text-blue-1 xl:w-fit xl:rounded-full xl:absolute select-none"),
@@ -14,7 +14,7 @@ let style = {
 }
 
 export default function CarSearch({ onSearch, filter }) {
-    const { state, isOpenBrandPicker, isOpenCalendar, calendarMode, on, ui } = useCarFilter(onSearch, filter);
+    const { state, isOpenBrandPicker, isOpenCalendar, calendarMode, on, ui } = useCarSearch(onSearch, filter);
     return (
         <div className={style.container()} left={"center"} >
             <Button className={style.btn.container()} variant={"primary"} sharp={"circle"} onClick={on.click.btn.pickup.brand} >

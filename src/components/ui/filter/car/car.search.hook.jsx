@@ -4,7 +4,7 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next";
 import { useLoaderData } from "react-router";
 
-export default function useCarFilter(onSearch, filter) {
+export default function useCarSearch(onSearch, filter) {
     const loader = useLoaderData();
     const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(null)
