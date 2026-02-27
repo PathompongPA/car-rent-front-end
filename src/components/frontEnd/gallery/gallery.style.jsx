@@ -6,7 +6,7 @@ let btnbody = cva([btn, "hidden justify-center items-center absolute | p-2 botto
 let style = {
     gallery: cva("flex flex-col justify-center items-center  | md:p-0 lg:max-w-7xl xl:min-w-7xl lg:snap-center select-none "),
 
-    header: cva("grid grid-cols-20 w-full items-center | px-4 | text-title-3 font-black text-blue-1 border *:border "),
+    header: cva("grid grid-cols-20 w-full items-center | px-4 | text-title-3 font-black text-blue-1 "),
     btnPreCar: cva([btnHeader, " col-span-2 justify-start "]),
     btnNextCar: cva([btnHeader, "col-span-2 justify-end "]),
     titleHeader: cva("text-center col-span-16 text-description-1 t md:text-description-1 xl:text-title-2 text-nowrap truncate"),
