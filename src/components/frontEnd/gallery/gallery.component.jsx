@@ -19,18 +19,20 @@ export default function GalleryCar() {
                 </div>
                 <div className={style.body()}>
                     <h1 className={style.titleOverlay()}></h1>
-                    <img className={style.image()} src={state.img} />
+                    <div className={style.boxImage()}>
+                        <img className={style.image()} src={state.img} />
+                        <button className={style.btnPreImage()} onClick={on.click.btn.image.pre} >
+                            <Icon variant={"pre"} size={"s"} />
+                        </button>
+                        <button className={style.btnNextImage()} onClick={on.click.btn.image.next} >
+                            <Icon variant={"next"} size={"s"} />
+                        </button>
+                    </div>
                     <div className={style.images()}>
                         {state?.images?.map((img, index) =>
                             <img className={style.img()} src={img} key={index} onClick={on.click.image.mini} data-is-focus={state.indexImage === index} />
                         )}
                     </div>
-                    <button className={style.btnPreImage()} onClick={on.click.btn.image.pre} >
-                        <Icon variant={"pre"} size={"s"} />
-                    </button>
-                    <button className={style.btnNextImage()} onClick={on.click.btn.image.next} >
-                        <Icon variant={"next"} size={"s"} />
-                    </button>
                 </div>
             </div>
         </Reveal>

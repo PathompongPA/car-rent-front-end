@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority"
 
 let style = {
-    container: cva(" flex justify-center items-center overflow-hidden aspect-square", {}),
+    container: cva(" flex justify-center items-center overflow-hidden aspect-square min-h-[25px]", {}),
     icon: cva("fa-solid ", {
         variants: {
             variant: {
