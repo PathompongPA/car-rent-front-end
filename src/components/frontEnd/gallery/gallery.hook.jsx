@@ -57,7 +57,7 @@ export default function useGallery() {
                     }
                 },
                 image: {
-                    mini: (e) => { setIndexImage(Number(e.target.getAttribute("index"))) }
+                    mini: (index) => { setIndexImage(index) }
                 }
             }
         }

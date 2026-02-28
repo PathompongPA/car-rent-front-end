@@ -30,7 +30,7 @@ export default function GalleryCar() {
                     </div>
                     <div className={style.images()}>
                         {state?.images?.map((img, index) =>
-                            <img className={style.img()} src={img} key={index} onClick={on.click.image.mini} data-is-focus={state.indexImage === index} />
+                            <img className={style.img()} src={img} key={index} onClick={() => on.click.image.mini(index)} data-is-focus={state.indexImage === index} />
                         )}
                     </div>
                 </div>
