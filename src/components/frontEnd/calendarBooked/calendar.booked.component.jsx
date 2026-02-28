@@ -1,6 +1,6 @@
 import useCalendarBooked from "./calendar.booked.hook";
 import { Reveal } from "../../materials";
-import { style } from "./calendar.style";
+import { style } from "../gallery/gallery.style";
 
 export default function CalendarBooked() {
     const { state, ui, on } = useCalendarBooked();
