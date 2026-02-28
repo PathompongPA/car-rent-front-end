@@ -1,4 +1,4 @@
-import { Reveal } from "../../materials";
+import { Icon, Reveal } from "../../materials";
 import useGallery from "./gallery.hook";
 import { style } from "./gallery.style";
 
@@ -9,9 +9,13 @@ export default function GalleryCar() {
         <Reveal>
             <div className={style.gallery()}>
                 <div className={style.header()}>
-                    <button className={style.btnPreCar()} onClick={on.click.btn.car.pre} data-is-show={state.isShow.btn.car.pre}>{`<`}</button>
+                    <button className={style.btnPreCar()} onClick={on.click.btn.car.pre} data-is-show={state.isShow.btn.car.pre}>
+                        <Icon variant={"pre"} size={"s"} />
+                    </button>
                     <h1 className={style.titleHeader()}>{ui.title}</h1>
-                    <button className={style.btnNextCar()} onClick={on.click.btn.car.next} data-is-show={state.isShow.btn.car.next}>{`>`}</button>
+                    <button className={style.btnNextCar()} onClick={on.click.btn.car.next} data-is-show={state.isShow.btn.car.next}>
+                        <Icon variant={"next"} size={"s"} />
+                    </button>
                 </div>
                 <div className={style.body()}>
                     <h1 className={style.titleOverlay()}></h1>
@@ -21,8 +25,12 @@ export default function GalleryCar() {
                             <img className={style.img()} src={img} key={index} onClick={on.click.image.mini} data-is-focus={state.indexImage === index} />
                         )}
                     </div>
-                    <button className={style.btnPreImage()} onClick={on.click.btn.image.pre} >{`<`}</button>
-                    <button className={style.btnNextImage()} onClick={on.click.btn.image.next} >{`>`}</button>
+                    <button className={style.btnPreImage()} onClick={on.click.btn.image.pre} >
+                        <Icon variant={"pre"} size={"s"} />
+                    </button>
+                    <button className={style.btnNextImage()} onClick={on.click.btn.image.next} >
+                        <Icon variant={"next"} size={"s"} />
+                    </button>
                 </div>
             </div>
         </Reveal>

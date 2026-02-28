@@ -6,12 +6,12 @@ let btnbody = cva([btn, "hidden justify-center items-center absolute | p-2 botto
 let style = {
     gallery: cva("flex flex-col justify-center items-center  | md:p-0 lg:max-w-7xl xl:min-w-7xl lg:snap-center select-none "),
 
-    header: cva(" flex flex-row justify-between w-full items-center | px-4 | text-title-3 font-black text-blue-1 "),
+    header: cva("flex flex-row justify-between items-center w-screen xl:w-full | xl:px-0 | text-title-3 font-black text-blue-1 "),
     btnPreCar: cva([btnHeader]),
     btnNextCar: cva([btnHeader]),
     titleHeader: cva("text-center col-span-16 text-description-1 t md:text-description-1 xl:text-title-2 text-nowrap truncate"),
 
-    body: cva("flex flex-wrap justify-center items-center relative  gap-0  px-4  w-full md:w-full md:gap-2  "),
+    body: cva("flex flex-wrap justify-center items-center relative  gap-0  px-4 xl:px-0  w-full md:w-full md:gap-2  "),
     titleOverlay: cva("  hidden select-none h-fit absolute right-8 top-4 z-10 | md:block text-white lg:text-2xl font-black text-shadow-black text-shadow-lg/50"),
     image: cva("aspect-16/9 object-cover | md:w-full rounded-lg  hidden md:block "),
     images: cva(" flex flex-row justify-start relative overflow-y-hidden overflow-x-scroll snap-x snap-mandatory scroll-smooth | py-0 pb-2 gap-2 | md:rounded-none md:pt-0 lg:gap-2"),
