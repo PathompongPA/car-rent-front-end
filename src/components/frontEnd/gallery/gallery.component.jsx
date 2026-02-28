@@ -21,8 +21,8 @@ export default function GalleryCar() {
                             <img className={style.img()} src={img} key={index} onClick={on.click.image.mini} data-is-focus={state.indexImage === index} />
                         )}
                     </div>
-                    <button className={style.btnPreImage} onClick={on.click.btn.image.pre} >{`<`}</button>
-                    <button className={style.btnNextImage} onClick={on.click.btn.image.next} >{`>`}</button>
+                    <button className={style.btnPreImage()} onClick={on.click.btn.image.pre} >{`<`}</button>
+                    <button className={style.btnNextImage()} onClick={on.click.btn.image.next} >{`>`}</button>
                 </div>
             </div>
         </Reveal>
